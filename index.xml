@@ -6,8 +6,82 @@
     <description>Recent content in ICE JAM on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2019 10:48:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Mar 2019 22:27:15 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>LeetCode</title>
+      <link>https://orrrz.github.io/posts/leetcode/</link>
+      <pubDate>Wed, 20 Mar 2019 22:27:15 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/leetcode/</guid>
+      <description>
+
+&lt;h2 id=&#34;leetcode-解题记录&#34;&gt;LeetCode 解题记录&lt;/h2&gt;
+
+&lt;h3 id=&#34;709-to-lower-case&#34;&gt;709 To Lower Case&lt;/h3&gt;
+
+&lt;p&gt;Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;chars[i] += &#39;a&#39; - &#39;A&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;771-jewels-and-stones&#34;&gt;771 Jewels and Stones&lt;/h3&gt;
+
+&lt;p&gt;You&amp;rsquo;re given strings &lt;code&gt;J&lt;/code&gt; representing the types of stones that are jewels, and &lt;code&gt;S&lt;/code&gt; representing the stones you have.  Each character in &lt;code&gt;S&lt;/code&gt; is a type of stone you have.  You want to know how many of the stones you have are also jewels.&lt;/p&gt;
+
+&lt;p&gt;The letters in &lt;code&gt;J&lt;/code&gt; are guaranteed distinct, and all characters in &lt;code&gt;J&lt;/code&gt; and &lt;code&gt;S&lt;/code&gt; are letters. Letters are case sensitive, so &lt;code&gt;&amp;quot;a&amp;quot;&lt;/code&gt; is considered a different type of stone from &lt;code&gt;&amp;quot;A&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;S&lt;/code&gt; and &lt;code&gt;J&lt;/code&gt; will consist of letters and have length at most 50.&lt;/li&gt;
+&lt;li&gt;The characters in &lt;code&gt;J&lt;/code&gt; are distinct.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Solution 1 :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int count = 0;
+        char[] jChar = J.toCharArray();
+        char[] sChar = S.toCharArray();
+        Map&amp;lt;Character, Integer&amp;gt; map = new HashMap&amp;lt;Character, Integer&amp;gt;();
+        for (int i = 0; i &amp;lt; jChar.length; i++) {
+            map.put(jChar[i], i);
+            
+        }
+        for (int j = 0; j &amp;lt; sChar.length; j++) {
+                if (map.containsKey(sChar[j])) {
+                    count ++;
+                }
+            }
+        return count;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Solution 2 :&lt;/p&gt;
+
+&lt;p&gt;tips : 因为使用了break，所以J、S的循环先后顺序不能调换，如不用break就无所谓顺序。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Solution {
+    public int numJewelsInStones(String J, String S) {
+    	int count = 0;
+        for(char s : S.toCharArray()) {
+            for (char j : S.toCharArray()) {
+                if (j == s) {
+                    count ++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Git Memo</title>
