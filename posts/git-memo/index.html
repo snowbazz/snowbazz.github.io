@@ -49,7 +49,7 @@
     "description" : "HUGO Add some content
 hugo new posts/xxx.md  Start the Hugo Server
 # 重新生成静态blog # -t 主题 hugo -t=hyde -D  上传到orrrz.github.io
-cd public git init git add . git commit -m 'xxx' git remote add origin git@github.com:username/username.github.io.git git push -u origin master  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot; msg=&quot;rebuilding site `date`&quot; if [ $# -eq 1 ] then msg=&quot;$1&quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &quot;$msg&quot; git push --force -u origin master cd .",
+cd public git init git add . git commit -m 'xxx' git remote add origin git@github.com:username/username.github.io.git git push -u origin master # --force  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot; msg=&quot;rebuilding site `date`&quot; if [ $# -eq 1 ] then msg=&quot;$1&quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &quot;$msg&quot; git push --force -u origin master cd .",
     "inLanguage" : "en-us",
     "author" : "icejam",
     "creator" : "icejam",
@@ -60,7 +60,7 @@ cd public git init git add . git commit -m 'xxx' git remote add origin git@githu
     "datePublished": "2019-03-20 10:48:50 &#43;0800 CST",
     "dateModified" : "2019-03-20 10:48:50 &#43;0800 CST",
     "url" : "https://orrrz.github.io/posts/git-memo/",
-    "wordCount" : "281",
+    "wordCount" : "283",
     "keywords" : [  "ICE JAM"]
 }
 </script>
@@ -151,12 +151,12 @@ cd public git init git add . git commit -m 'xxx' git remote add origin git@githu
 
 <p>Add some content</p>
 
-<pre><code>hugo new posts/xxx.md
+<pre><code class="language-git">hugo new posts/xxx.md
 </code></pre>
 
 <p>Start the Hugo Server</p>
 
-<pre><code># 重新生成静态blog
+<pre><code class="language-git"># 重新生成静态blog
 # -t 主题
 hugo -t=hyde -D    
 </code></pre>
@@ -172,11 +172,12 @@ git commit -m 'xxx'
 git remote add origin git@github.com:username/username.github.io.git
 
 git push -u origin master
+# --force
 </code></pre>
 
 <h4 id="一键部署">一键部署</h4>
 
-<pre><code># 在根目录新建 deploy.sh ，复制以下代码并保存
+<pre><code class="language-git"># 在根目录新建 deploy.sh ，复制以下代码并保存
 #!/bin/bash
 
 echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
@@ -198,19 +199,19 @@ cd ../
 
 <p>如果是linux系统还需要给脚本添加可执行权限</p>
 
-<pre><code>chmod +x deploy.sh
+<pre><code class="language-git">chmod +x deploy.sh
 </code></pre>
 
 <p>启动</p>
 
-<pre><code>./deploy.sh
+<pre><code class="language-git">./deploy.sh
 </code></pre>
 
 <hr>
 
 <h4 id="创建git-仓库">创建git 仓库</h4>
 
-<pre><code>mkdir xxx
+<pre><code class="language-git">mkdir xxx
 cd xxx
 git init
 
@@ -219,50 +220,50 @@ Initialized empty Git repository in /home/xxx/.git/
 
 <h4 id="添加一些文件并提交">添加一些文件并提交</h4>
 
-<pre><code>touch readme.md
+<pre><code class="language-git">touch readme.md
 git add readme.md
 git commit -m 'for test'
 </code></pre>
 
 <h4 id="从远程克隆仓库">从远程克隆仓库</h4>
 
-<pre><code># SSH协议/HTTPS协议地址
+<pre><code class="language-git"># SSH协议/HTTPS协议地址
 git clone SSH/HTTPS
 </code></pre>
 
 <h4 id="查看分支">查看分支</h4>
 
-<pre><code>git branch
+<pre><code class="language-git">git branch
 # 查看本地和远程的分支情况
 git branch -a
 </code></pre>
 
 <h4 id="创建分支">创建分支</h4>
 
-<pre><code>git branch xxx
+<pre><code class="language-git">git branch xxx
 </code></pre>
 
 <h4 id="切换分支">切换分支</h4>
 
-<pre><code># 从当前branch切换到 xxx
+<pre><code class="language-git"># 从当前branch切换到 xxx
 git checkout xxx
 </code></pre>
 
 <h4 id="创建同时切换分支">创建同时切换分支</h4>
 
-<pre><code># 在当前分支上创建分支 dev，并切换到 dev
+<pre><code class="language-git"># 在当前分支上创建分支 dev，并切换到 dev
 git checkout -b dev
 </code></pre>
 
 <h4 id="删除分支">删除分支</h4>
 
-<pre><code># 不能在要删除的分支上操作
+<pre><code class="language-git"># 不能在要删除的分支上操作
 git branch -d dev
 </code></pre>
 
 <h4 id="将本地分支推送到远程分支">将本地分支推送到远程分支</h4>
 
-<pre><code># 提交本地的 dev 分支到远程仓库 origin 的 dev 分支
+<pre><code class="language-git"># 提交本地的 dev 分支到远程仓库 origin 的 dev 分支
 git push origin dev:dev
 # 提交本地的 dev 分支到远程仓库 origin 的 remotedev 分支
 git push orgin dev:remotedev
@@ -270,27 +271,27 @@ git push orgin dev:remotedev
 
 <h4 id="删除远程分支">删除远程分支</h4>
 
-<pre><code># 删除远程仓库的 remotetest 分支，本地的不收影响
+<pre><code class="language-git"># 删除远程仓库的 remotetest 分支，本地的不收影响
 git push origin :remotedev
 </code></pre>
 
 <h4 id="拉取远程分支">拉取远程分支</h4>
 
-<pre><code>git pull &lt;remote&gt; &lt;branch&gt;
+<pre><code class="language-git">git pull &lt;remote&gt; &lt;branch&gt;
 # 比如 将远程 origin 仓库 testpull 分支拉取下来
 git pull origin testpull
 </code></pre>
 
 <h4 id="本地分支与远程分支关联">本地分支与远程分支关联</h4>
 
-<pre><code>git branch --set-upstream-to=origin/&lt;branch&gt; dev
+<pre><code class="language-git">git branch --set-upstream-to=origin/&lt;branch&gt; dev
 # 本地的 dev 分支和远程的 origin/dev 分支关联后，可以直接使用 git pull
 git branch --set-upstream-to=origin/dev dev
 </code></pre>
 
 <h4 id="合并分支">合并分支</h4>
 
-<pre><code># 将test合并到当前分支上
+<pre><code class="language-git"># 将test合并到当前分支上
 git merge test
 </code></pre>
 
@@ -298,7 +299,7 @@ git merge test
 
 <p>有时候在远程仓库的基础上，拉取特定的某一个分支</p>
 
-<pre><code># localdev 是本地分支， origin/dev 是远程的 dev 分支
+<pre><code class="language-git"># localdev 是本地分支， origin/dev 是远程的 dev 分支
 git checkout -b localdev origin/dev
 </code></pre>
 
@@ -306,7 +307,7 @@ git checkout -b localdev origin/dev
 
 <p>git fetch 和 git pull 很像，但 git fetch 要柔和一点，git pull 会将远程的命令拉下来直接和本地的合并。git fetch 会先获取信息，但不合并。</p>
 
-<pre><code>git fetch origin dev
+<pre><code class="language-git">git fetch origin dev
 # 比较本地版本和远程版本
 git log -p dev origin/dev
 # 合并远程 dev 版本

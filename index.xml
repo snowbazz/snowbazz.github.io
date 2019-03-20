@@ -21,12 +21,12 @@
 
 &lt;p&gt;Add some content&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new posts/xxx.md
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;hugo new posts/xxx.md
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Start the Hugo Server&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# 重新生成静态blog
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 重新生成静态blog
 # -t 主题
 hugo -t=hyde -D    
 &lt;/code&gt;&lt;/pre&gt;
@@ -42,11 +42,12 @@ git commit -m &#39;xxx&#39;
 git remote add origin git@github.com:username/username.github.io.git
 
 git push -u origin master
+# --force
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;一键部署&#34;&gt;一键部署&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 在根目录新建 deploy.sh ，复制以下代码并保存
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 在根目录新建 deploy.sh ，复制以下代码并保存
 #!/bin/bash
 
 echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
@@ -68,19 +69,19 @@ cd ../
 
 &lt;p&gt;如果是linux系统还需要给脚本添加可执行权限&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;chmod +x deploy.sh
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;chmod +x deploy.sh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;启动&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;./deploy.sh
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;./deploy.sh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr&gt;
 
 &lt;h4 id=&#34;创建git-仓库&#34;&gt;创建git 仓库&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;mkdir xxx
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;mkdir xxx
 cd xxx
 git init
 
@@ -89,50 +90,50 @@ Initialized empty Git repository in /home/xxx/.git/
 
 &lt;h4 id=&#34;添加一些文件并提交&#34;&gt;添加一些文件并提交&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;touch readme.md
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;touch readme.md
 git add readme.md
 git commit -m &#39;for test&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;从远程克隆仓库&#34;&gt;从远程克隆仓库&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# SSH协议/HTTPS协议地址
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# SSH协议/HTTPS协议地址
 git clone SSH/HTTPS
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;查看分支&#34;&gt;查看分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;git branch
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch
 # 查看本地和远程的分支情况
 git branch -a
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;创建分支&#34;&gt;创建分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;git branch xxx
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch xxx
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;切换分支&#34;&gt;切换分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 从当前branch切换到 xxx
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 从当前branch切换到 xxx
 git checkout xxx
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;创建同时切换分支&#34;&gt;创建同时切换分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 在当前分支上创建分支 dev，并切换到 dev
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 在当前分支上创建分支 dev，并切换到 dev
 git checkout -b dev
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;删除分支&#34;&gt;删除分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 不能在要删除的分支上操作
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 不能在要删除的分支上操作
 git branch -d dev
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;将本地分支推送到远程分支&#34;&gt;将本地分支推送到远程分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 提交本地的 dev 分支到远程仓库 origin 的 dev 分支
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 提交本地的 dev 分支到远程仓库 origin 的 dev 分支
 git push origin dev:dev
 # 提交本地的 dev 分支到远程仓库 origin 的 remotedev 分支
 git push orgin dev:remotedev
@@ -140,27 +141,27 @@ git push orgin dev:remotedev
 
 &lt;h4 id=&#34;删除远程分支&#34;&gt;删除远程分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 删除远程仓库的 remotetest 分支，本地的不收影响
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 删除远程仓库的 remotetest 分支，本地的不收影响
 git push origin :remotedev
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;拉取远程分支&#34;&gt;拉取远程分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;git pull &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git pull &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
 # 比如 将远程 origin 仓库 testpull 分支拉取下来
 git pull origin testpull
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;本地分支与远程分支关联&#34;&gt;本地分支与远程分支关联&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
 # 本地的 dev 分支和远程的 origin/dev 分支关联后，可以直接使用 git pull
 git branch --set-upstream-to=origin/dev dev
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;合并分支&#34;&gt;合并分支&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# 将test合并到当前分支上
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 将test合并到当前分支上
 git merge test
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -168,7 +169,7 @@ git merge test
 
 &lt;p&gt;有时候在远程仓库的基础上，拉取特定的某一个分支&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# localdev 是本地分支， origin/dev 是远程的 dev 分支
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# localdev 是本地分支， origin/dev 是远程的 dev 分支
 git checkout -b localdev origin/dev
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -176,7 +177,7 @@ git checkout -b localdev origin/dev
 
 &lt;p&gt;git fetch 和 git pull 很像，但 git fetch 要柔和一点，git pull 会将远程的命令拉下来直接和本地的合并。git fetch 会先获取信息，但不合并。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;git fetch origin dev
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git fetch origin dev
 # 比较本地版本和远程版本
 git log -p dev origin/dev
 # 合并远程 dev 版本

@@ -20,7 +20,7 @@
       <description>HUGO Add some content
 hugo new posts/xxx.md  Start the Hugo Server
 # 重新生成静态blog # -t 主题 hugo -t=hyde -D  上传到orrrz.github.io
-cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin git@github.com:username/username.github.io.git git push -u origin master  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &amp;quot;$msg&amp;quot; git push --force -u origin master cd .</description>
+cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin git@github.com:username/username.github.io.git git push -u origin master # --force  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &amp;quot;$msg&amp;quot; git push --force -u origin master cd .</description>
     </item>
     
     <item>
