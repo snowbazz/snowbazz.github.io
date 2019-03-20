@@ -60,7 +60,7 @@ cd public git init git add . git commit -m 'xxx' git remote add origin git@githu
     "datePublished": "2019-03-20 10:48:50 &#43;0800 CST",
     "dateModified" : "2019-03-20 10:48:50 &#43;0800 CST",
     "url" : "https://orrrz.github.io/posts/git-memo/",
-    "wordCount" : "283",
+    "wordCount" : "293",
     "keywords" : [  "ICE JAM"]
 }
 </script>
@@ -223,6 +223,13 @@ Initialized empty Git repository in /home/xxx/.git/
 <pre><code class="language-git">touch readme.md
 git add readme.md
 git commit -m 'for test'
+</code></pre>
+
+<h4 id="push前应先将远程repo修改pull下来">push前应先将远程repo修改pull下来</h4>
+
+<pre><code class="language-git">git pull origin master
+
+git push -u origin master
 </code></pre>
 
 <h4 id="从远程克隆仓库">从远程克隆仓库</h4>

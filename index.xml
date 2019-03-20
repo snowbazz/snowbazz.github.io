@@ -95,6 +95,13 @@ git add readme.md
 git commit -m &#39;for test&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h4 id=&#34;push前应先将远程repo修改pull下来&#34;&gt;push前应先将远程repo修改pull下来&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git pull origin master
+
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4 id=&#34;从远程克隆仓库&#34;&gt;从远程克隆仓库&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# SSH协议/HTTPS协议地址
