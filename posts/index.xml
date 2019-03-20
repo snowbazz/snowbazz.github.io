@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on ICE JAM</title>
+    <link>https://orrrz.github.io/posts/</link>
+    <description>Recent content in Posts on ICE JAM</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Mar 2019 10:48:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://orrrz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git Memo</title>
+      <link>https://orrrz.github.io/posts/git-memo/</link>
+      <pubDate>Wed, 20 Mar 2019 10:48:50 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/git-memo/</guid>
+      <description>HUGO Add some content
+hugo new posts/xxx.md  Start the Hugo Server
+# 重新生成静态blog # -t 主题 hugo -t=hyde -D  上传到orrrz.github.io
+cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin git@github.com:username/username.github.io.git git push -u origin master  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &amp;quot;$msg&amp;quot; git push --force -u origin master cd .</description>
+    </item>
+    
+    <item>
+      <title>Some Sentences</title>
+      <link>https://orrrz.github.io/posts/some-sentences/</link>
+      <pubDate>Thu, 07 Mar 2019 11:38:10 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/some-sentences/</guid>
+      <description>‘I wish you all enough courage to be yourselves without need for approval or permission from anyone&amp;hellip;’
+‘I wish you enough humility to stop thinking you are better than anyone&amp;hellip; ‘</description>
+    </item>
+    
+  </channel>
+</rss>
