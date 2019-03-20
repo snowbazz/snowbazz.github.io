@@ -169,7 +169,7 @@ chars[i] += 'a' - 'A';  771 Jewels and Stones You&rsquo;re given strings J repre
 
 <p>Solution 1 :</p>
 
-<pre><code>class Solution {
+<pre><code class="language-java">class Solution {
     public int numJewelsInStones(String J, String S) {
         int count = 0;
         char[] jChar = J.toCharArray();
@@ -193,7 +193,7 @@ chars[i] += 'a' - 'A';  771 Jewels and Stones You&rsquo;re given strings J repre
 
 <p>tips : 因为使用了break，所以J、S的循环先后顺序不能调换，如不用break就无所谓顺序。</p>
 
-<pre><code>class Solution {
+<pre><code class="language-java">class Solution {
     public int numJewelsInStones(String J, String S) {
     	int count = 0;
         for(char s : S.toCharArray()) {

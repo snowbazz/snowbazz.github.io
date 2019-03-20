@@ -41,7 +41,7 @@
 
 &lt;p&gt;Solution 1 :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Solution {
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numJewelsInStones(String J, String S) {
         int count = 0;
         char[] jChar = J.toCharArray();
@@ -65,7 +65,7 @@
 
 &lt;p&gt;tips : 因为使用了break，所以J、S的循环先后顺序不能调换，如不用break就无所谓顺序。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class Solution {
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numJewelsInStones(String J, String S) {
     	int count = 0;
         for(char s : S.toCharArray()) {
