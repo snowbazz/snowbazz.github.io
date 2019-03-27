@@ -48,15 +48,13 @@
     "headline" : "RESTful API",
     "description" : "RESTful API RESTful：符合REST架构风格的网络API接口。
 REST：Representational State Transfer 表现层状态转移
-一、起源 REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
-RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
-二、Richardson Maturity Model（理查德森模型） http://martinfowler.com/articles/richardsonMaturityModel.html
+一、起源 ​ REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
+​ RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
+二、Richardson Maturity Model（理查德森模型） ​ http://martinfowler.com/articles/richardsonMaturityModel.html
 1）Level0（The Swamp of POX）
-不算REST
-根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
-2）Level 1 Resources
-拥有了面向资源的特征，每个资源都有自己相对应的URI。
-3）Level 2 HTTP verbs",
+​ 不算REST的一部分。
+​ 根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
+2）Level 1 Resources",
     "inLanguage" : "en-us",
     "author" : "icejam",
     "creator" : "icejam",
@@ -67,7 +65,7 @@ RESTful架构的本意是在符合架构原理的前提下，理解和评估以�
     "datePublished": "2019-03-27 19:55:23 &#43;0800 CST",
     "dateModified" : "2019-03-27 19:55:23 &#43;0800 CST",
     "url" : "https://orrrz.github.io/posts/restful-api/",
-    "wordCount" : "153",
+    "wordCount" : "169",
     "keywords" : [  "ICE JAM"]
 }
 </script>
@@ -164,29 +162,29 @@ RESTful架构的本意是在符合架构原理的前提下，理解和评估以�
 
 <h3 id="一-起源">一、起源</h3>
 
-<p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a>在他2000年的<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出的。</p>
+<p>​   REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a>在他2000年的<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出的。</p>
 
-<p>RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）</p>
+<p>​   RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）</p>
 
 <h3 id="二-richardson-maturity-model-理查德森模型">二、Richardson Maturity Model（理查德森模型）</h3>
 
-<p><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">http://martinfowler.com/articles/richardsonMaturityModel.html</a></p>
+<p>​   <a href="http://martinfowler.com/articles/richardsonMaturityModel.html">http://martinfowler.com/articles/richardsonMaturityModel.html</a></p>
 
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
 
 <p>1）Level0（The Swamp of POX）</p>
 
-<p>不算REST</p>
+<p>​   不算REST的一部分。</p>
 
-<p>根据交换的XML内容操作所有的资源，类似<a href="http://www.w3school.com.cn/soap/soap_intro.asp">SOAP</a>（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。</p>
+<p>​   根据交换的XML内容操作所有的资源，类似<a href="http://www.w3school.com.cn/soap/soap_intro.asp">SOAP</a>（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。</p>
 
 <p>2）Level 1 Resources</p>
 
-<p>拥有了面向资源的特征，每个资源都有自己相对应的URI。</p>
+<p>​   拥有了面向资源的特征，每个资源都有自己相对应的URI。</p>
 
 <p>3）Level 2 HTTP verbs</p>
 
-<p>使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范</p>
+<p>​   使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范</p>
 
 <p>4）Level 3 Hypermedia Controls</p>
 
@@ -217,35 +215,26 @@ RESTful架构的本意是在符合架构原理的前提下，理解和评估以�
 
 <h3 id="三-资源-resources">三、资源（Resources）</h3>
 
-<blockquote>
-<p>REST省略了主语，即资源表现层</p>
+<p>​   REST省略了主语，即资源表现层。</p>
 
-<p>所谓的&rdquo;资源&rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，<strong>URI是每一个资源的地址或独一无二的标识。</strong></p>
+<p>​   所谓的&rdquo;资源&rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，<strong>URI是每一个资源的地址或独一无二的标识。</strong></p>
 
-<p>所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI</p>
-</blockquote>
+<p>​   所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI</p>
 
 <h3 id="四-表现层-representation">四、表现层（Representation）</h3>
 
-<blockquote>
-<p>&ldquo;资源&rdquo;是一种信息实体，它可以有多种外在表现形式。<strong>我们把&rdquo;资源&rdquo;具体呈现出来的形式，叫做它的&rdquo;表现层&rdquo;（Representation）。</strong></p>
+<p>​   &ldquo;资源&rdquo;是一种信息实体，它可以有多种外在表现形式。<strong>我们把&rdquo;资源&rdquo;具体呈现出来的形式，叫做它的&rdquo;表现层&rdquo;（Representation）。</strong></p>
 
-<p>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。</p>
-
-<p>它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&rdquo;表现层&rdquo;的描述。</p>
-</blockquote>
+<p>​   比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&rdquo;表现层&rdquo;的描述。</p>
 
 <h3 id="五-状态转移-state-transfer">五、状态转移（State Transfer）</h3>
 
-<blockquote>
-<p>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，<strong>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&rdquo;状态转化&rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&rdquo;表现层状态转化&rdquo;。</strong></p>
+<p>​   互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，<strong>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&rdquo;状态转化&rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&rdquo;表现层状态转化&rdquo;。</strong></p>
 
-<p>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。</p>
-</blockquote>
+<p>​   客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。</p>
 
 <h3 id="六-总结">六、总结</h3>
 
-<blockquote>
 <p>1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源</p>
 
 <p>2）将HTTP作为了一种传输协议，最直观的是使用了HTTP规范，使用标准的HTTP方法来操作资源，GET/PUT/DELETE/POST，实现&rdquo;表现层状态转移&rdquo;。</p>
@@ -256,12 +245,11 @@ RESTful架构的本意是在符合架构原理的前提下，理解和评估以�
 
 <p>5）RESTful 架构的好处：</p>
 
-<p>​ 互联网环境下，任何应用的架构和API容易被理解</p>
+<p>​   a. 互联网环境下，任何应用的架构和API容易被理解</p>
 
-<p>​ 分布式环境下，任何请求都可以被发送到任意服务器</p>
+<p>​   b. 分布式环境下，任何请求都可以被发送到任意服务器</p>
 
-<p>​ 异构环境下， 任何环境的访问和使用方式都统一</p>
-</blockquote>
+<p>​   c. 异构环境下， 任何环境的访问和使用方式都统一</p>
 
 <hr>
 
