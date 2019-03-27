@@ -96,7 +96,74 @@
 
 &lt;p&gt;​   客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。&lt;/p&gt;
 
-&lt;h3 id=&#34;六-总结&#34;&gt;六、总结&lt;/h3&gt;
+&lt;h3 id=&#34;六-http-verbs&#34;&gt;六、HTTP verbs&lt;/h3&gt;
+
+&lt;h5 id=&#34;1-get&#34;&gt;1）GET&lt;/h5&gt;
+
+&lt;p&gt;向指定资源请求数据，一般用来获取，查询资源信息，较不安全，幂等。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;200（OK） - 表示已在响应中发出&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;204（无内容） - 资源有空表示&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;301（Moved Permanently） - 资源的URI已被更新&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;303（See Other） - 其他（如，负载均衡）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;304（not modified）- 资源未更改（缓存）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;400 （bad request）- 指代坏请求（如，参数错误）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;404 （not found）- 资源不存在&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;406 （not acceptable）- 服务端不支持所需表示&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;500 （internal server error）- 通用错误响应&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;503 （Service Unavailable）- 服务端当前无法处理请求&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;2-post&#34;&gt;2）POST&lt;/h5&gt;
+
+&lt;p&gt;​   向指定资源提交数据进行请求处理，一般用来更新资源信息，不幂等（POST请求服务器执行一个动作，多次请求会多次执行），请求显示在请求体里面，不会被缓存，对请求长度无限制。&lt;/p&gt;
+
+&lt;h5 id=&#34;3-put&#34;&gt;3）PUT&lt;/h5&gt;
+
+&lt;p&gt;通过替换的方式更新资源，不安全，幂等。&lt;/p&gt;
+
+&lt;h5 id=&#34;4-delete&#34;&gt;4）DELETE&lt;/h5&gt;
+
+&lt;p&gt;不安全、幂等，删除。&lt;/p&gt;
+
+&lt;h5 id=&#34;5-patch&#34;&gt;5）PATCH&lt;/h5&gt;
+
+&lt;p&gt;​   不幂等，理论上讲PUT所做的更新是对整个对象来说的，一般都是将整个对象传输到后台进行整体修改，如果我只有一个字段想要改变，也要这么做，有点浪费带宽，所以出现了PATCH：&lt;strong&gt;局部更新&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;Github的API则支持使用PATCH方法来进行issue的更新，例如:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PATCH /repos/:owner/:repo/issues/:number
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 本文无关...
+@PathVariable：自动将rest请求匹配到同名参数上
+
+@ModelAttribute：自动将请求的form表单参数 组装成对象
+
+@RequestBody:自动将请求的json参数 组装成对象
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;什么是幂等？&lt;/p&gt;
+
+&lt;p&gt;Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N &amp;gt; 0 identical requests is the same as for a single request.
+——HTTP/1.1规范中幂等性的定义&lt;/p&gt;
+
+&lt;p&gt;​ 从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。说白了就是，&lt;strong&gt;同一个请求，发送一次和发送N次效果是一样的！&lt;/strong&gt;幂等性是分布式系统设计中十分重要的概念&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;七-总结&#34;&gt;七、总结&lt;/h3&gt;
 
 &lt;p&gt;1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源&lt;/p&gt;
 
@@ -116,7 +183,7 @@
 
 &lt;hr&gt;
 
-&lt;h3 id=&#34;七-参考&#34;&gt;七、参考&lt;/h3&gt;
+&lt;h3 id=&#34;八-参考&#34;&gt;八、参考&lt;/h3&gt;
 
 &lt;p&gt;RESTful 架构详解：&lt;a href=&#34;https://www.runoob.com/w3cnote/restful-architecture.html&#34;&gt;https://www.runoob.com/w3cnote/restful-architecture.html&lt;/a&gt;&lt;/p&gt;
 
