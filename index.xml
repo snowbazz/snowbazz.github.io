@@ -6,8 +6,135 @@
     <description>Recent content in ICE JAM on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2019 22:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 19:55:23 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>RESTful API</title>
+      <link>https://orrrz.github.io/posts/restful-api/</link>
+      <pubDate>Wed, 27 Mar 2019 19:55:23 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/restful-api/</guid>
+      <description>
+
+&lt;h1 id=&#34;restful-api&#34;&gt;RESTful API&lt;/h1&gt;
+
+&lt;p&gt;RESTful：符合REST架构风格的网络API接口。&lt;/p&gt;
+
+&lt;p&gt;REST：Representational State Transfer  表现层状态转移&lt;/p&gt;
+
+&lt;h3 id=&#34;一-起源&#34;&gt;一、起源&lt;/h3&gt;
+
+&lt;p&gt;REST这个词，是&lt;a href=&#34;http://en.wikipedia.org/wiki/Roy_Fielding&#34;&gt;Roy Thomas Fielding&lt;/a&gt;在他2000年的&lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;&gt;博士论文&lt;/a&gt;中提出的。&lt;/p&gt;
+
+&lt;p&gt;RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）&lt;/p&gt;
+
+&lt;h3 id=&#34;二-richardson-maturity-model-理查德森模型&#34;&gt;二、Richardson Maturity Model（理查德森模型）&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://martinfowler.com/articles/richardsonMaturityModel.html&#34;&gt;http://martinfowler.com/articles/richardsonMaturityModel.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1）Level0（The Swamp of POX）&lt;/p&gt;
+
+&lt;p&gt;不算REST&lt;/p&gt;
+
+&lt;p&gt;根据交换的XML内容操作所有的资源，类似&lt;a href=&#34;http://www.w3school.com.cn/soap/soap_intro.asp&#34;&gt;SOAP&lt;/a&gt;（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。&lt;/p&gt;
+
+&lt;p&gt;2）Level 1 Resources&lt;/p&gt;
+
+&lt;p&gt;拥有了面向资源的特征，每个资源都有自己相对应的URI。&lt;/p&gt;
+
+&lt;p&gt;3）Level 2 HTTP verbs&lt;/p&gt;
+
+&lt;p&gt;使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范&lt;/p&gt;
+
+&lt;p&gt;4）Level 3 Hypermedia Controls&lt;/p&gt;
+
+&lt;p&gt;​   这一层想解决的问题是 service discoverability 和 self-documenting。&lt;/p&gt;
+
+&lt;p&gt;​   REST架构希望赋予标准的, 高度可扩展的标准语义及表现形式。RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。​&lt;/p&gt;
+
+&lt;p&gt;​   Hypermedia API的设计被称为&lt;a href=&#34;http://en.wikipedia.org/wiki/HATEOAS&#34;&gt;HATEOAS&lt;/a&gt;(Hypermedia As The Engine Of Application State )，Github的API就是这种设计。大部分的RESTful接口只做到了Level2 的层次。&lt;/p&gt;
+
+&lt;p&gt;​   访问&lt;a href=&#34;https://api.github.com/&#34;&gt;api.github.com&lt;/a&gt;会得到一个所有可用API的网址列表。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; {
+   &amp;quot;current_user_url&amp;quot;: &amp;quot;https://api.github.com/user&amp;quot;,
+   &amp;quot;authorizations_url&amp;quot;: &amp;quot;https://api.github.com/authorizations&amp;quot;,
+   // ...
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​   从上面可以看到，如果想获取当前用户的信息，应该去访问&lt;a href=&#34;https://api.github.com/user&#34;&gt;api.github.com/user&lt;/a&gt;，然后就得到了下面结果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; {
+   &amp;quot;message&amp;quot;: &amp;quot;Requires authentication&amp;quot;,
+   &amp;quot;documentation_url&amp;quot;: &amp;quot;https://developer.github.com/v3&amp;quot;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​   上面代码表示，服务器给出了提示信息，以及文档的网址。&lt;/p&gt;
+
+&lt;h3 id=&#34;三-资源-resources&#34;&gt;三、资源（Resources）&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;REST省略了主语，即资源表现层&lt;/p&gt;
+
+&lt;p&gt;所谓的&amp;rdquo;资源&amp;rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，&lt;strong&gt;URI是每一个资源的地址或独一无二的标识。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;所谓&amp;rdquo;上网&amp;rdquo;，就是与互联网上一系列的&amp;rdquo;资源&amp;rdquo;互动，调用资源的URI&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;四-表现层-representation&#34;&gt;四、表现层（Representation）&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;资源&amp;rdquo;是一种信息实体，它可以有多种外在表现形式。&lt;strong&gt;我们把&amp;rdquo;资源&amp;rdquo;具体呈现出来的形式，叫做它的&amp;rdquo;表现层&amp;rdquo;（Representation）。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。&lt;/p&gt;
+
+&lt;p&gt;它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&amp;rdquo;表现层&amp;rdquo;的描述。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;五-状态转移-state-transfer&#34;&gt;五、状态转移（State Transfer）&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，&lt;strong&gt;如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&amp;rdquo;状态转化&amp;rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&amp;rdquo;表现层状态转化&amp;rdquo;。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;六-总结&#34;&gt;六、总结&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源&lt;/p&gt;
+
+&lt;p&gt;2）将HTTP作为了一种传输协议，最直观的是使用了HTTP规范，使用标准的HTTP方法来操作资源，GET/PUT/DELETE/POST，实现&amp;rdquo;表现层状态转移&amp;rdquo;。&lt;/p&gt;
+
+&lt;p&gt;3）无状态连接，服务器端不应保存过多上下文状态，每个请求应该都是独立的。&lt;/p&gt;
+
+&lt;p&gt;4）通过XML，JSON进行数据传递（服务器返回的数据格式，应该尽量使用JSON，避免使用XML。）&lt;/p&gt;
+
+&lt;p&gt;5）RESTful 架构的好处：&lt;/p&gt;
+
+&lt;p&gt;​ 互联网环境下，任何应用的架构和API容易被理解&lt;/p&gt;
+
+&lt;p&gt;​ 分布式环境下，任何请求都可以被发送到任意服务器&lt;/p&gt;
+
+&lt;p&gt;​ 异构环境下， 任何环境的访问和使用方式都统一&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&#34;七-参考&#34;&gt;七、参考&lt;/h3&gt;
+
+&lt;p&gt;RESTful 架构详解：&lt;a href=&#34;https://www.runoob.com/w3cnote/restful-architecture.html&#34;&gt;https://www.runoob.com/w3cnote/restful-architecture.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;RESTful 架构（阮）：&lt;a href=&#34;http://www.ruanyifeng.com/blog/2011/09/restful.html&#34;&gt;http://www.ruanyifeng.com/blog/2011/09/restful.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/e77d2f60aa5d&#34;&gt;https://www.jianshu.com/p/e77d2f60aa5d&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>LeetCode</title>

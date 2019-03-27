@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="icejam">
+  
+  
+  
+  <link rel="prev" href="https://orrrz.github.io/posts/leetcode/" />
+  
+  <link rel="canonical" href="https://orrrz.github.io/posts/restful-api/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           RESTful API | ICE JAM
+       
+  </title>
+  <meta name="title" content="RESTful API | ICE JAM">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://orrrz.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "RESTful API",
+    "headline" : "RESTful API",
+    "description" : "RESTful API RESTful：符合REST架构风格的网络API接口。
+REST：Representational State Transfer 表现层状态转移
+一、起源 REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
+RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
+二、Richardson Maturity Model（理查德森模型） http://martinfowler.com/articles/richardsonMaturityModel.html
+1）Level0（The Swamp of POX）
+不算REST
+根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
+2）Level 1 Resources
+拥有了面向资源的特征，每个资源都有自己相对应的URI。
+3）Level 2 HTTP verbs",
+    "inLanguage" : "en-us",
+    "author" : "icejam",
+    "creator" : "icejam",
+    "publisher": "icejam",
+    "accountablePerson" : "icejam",
+    "copyrightHolder" : "icejam",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-27 19:55:23 &#43;0800 CST",
+    "dateModified" : "2019-03-27 19:55:23 &#43;0800 CST",
+    "url" : "https://orrrz.github.io/posts/restful-api/",
+    "wordCount" : "153",
+    "keywords" : [  "ICE JAM"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://orrrz.github.io/">ICE JAM</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://orrrz.github.io/">ICE JAM</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">RESTful API</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://orrrz.github.io/" rel="author">icejam</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-27 itemprop="datePublished">March 27, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="restful-api">RESTful API</h1>
+
+<p>RESTful：符合REST架构风格的网络API接口。</p>
+
+<p>REST：Representational State Transfer  表现层状态转移</p>
+
+<h3 id="一-起源">一、起源</h3>
+
+<p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a>在他2000年的<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出的。</p>
+
+<p>RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）</p>
+
+<h3 id="二-richardson-maturity-model-理查德森模型">二、Richardson Maturity Model（理查德森模型）</h3>
+
+<p><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">http://martinfowler.com/articles/richardsonMaturityModel.html</a></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+
+<p>1）Level0（The Swamp of POX）</p>
+
+<p>不算REST</p>
+
+<p>根据交换的XML内容操作所有的资源，类似<a href="http://www.w3school.com.cn/soap/soap_intro.asp">SOAP</a>（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。</p>
+
+<p>2）Level 1 Resources</p>
+
+<p>拥有了面向资源的特征，每个资源都有自己相对应的URI。</p>
+
+<p>3）Level 2 HTTP verbs</p>
+
+<p>使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范</p>
+
+<p>4）Level 3 Hypermedia Controls</p>
+
+<p>​   这一层想解决的问题是 service discoverability 和 self-documenting。</p>
+
+<p>​   REST架构希望赋予标准的, 高度可扩展的标准语义及表现形式。RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。​</p>
+
+<p>​   Hypermedia API的设计被称为<a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>(Hypermedia As The Engine Of Application State )，Github的API就是这种设计。大部分的RESTful接口只做到了Level2 的层次。</p>
+
+<p>​   访问<a href="https://api.github.com/">api.github.com</a>会得到一个所有可用API的网址列表。</p>
+
+<pre><code class="language-javascript"> {
+   &quot;current_user_url&quot;: &quot;https://api.github.com/user&quot;,
+   &quot;authorizations_url&quot;: &quot;https://api.github.com/authorizations&quot;,
+   // ...
+ }
+</code></pre>
+
+<p>​   从上面可以看到，如果想获取当前用户的信息，应该去访问<a href="https://api.github.com/user">api.github.com/user</a>，然后就得到了下面结果。</p>
+
+<pre><code class="language-javascript"> {
+   &quot;message&quot;: &quot;Requires authentication&quot;,
+   &quot;documentation_url&quot;: &quot;https://developer.github.com/v3&quot;
+ }
+</code></pre>
+
+<p>​   上面代码表示，服务器给出了提示信息，以及文档的网址。</p>
+
+<h3 id="三-资源-resources">三、资源（Resources）</h3>
+
+<blockquote>
+<p>REST省略了主语，即资源表现层</p>
+
+<p>所谓的&rdquo;资源&rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，<strong>URI是每一个资源的地址或独一无二的标识。</strong></p>
+
+<p>所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI</p>
+</blockquote>
+
+<h3 id="四-表现层-representation">四、表现层（Representation）</h3>
+
+<blockquote>
+<p>&ldquo;资源&rdquo;是一种信息实体，它可以有多种外在表现形式。<strong>我们把&rdquo;资源&rdquo;具体呈现出来的形式，叫做它的&rdquo;表现层&rdquo;（Representation）。</strong></p>
+
+<p>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。</p>
+
+<p>它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&rdquo;表现层&rdquo;的描述。</p>
+</blockquote>
+
+<h3 id="五-状态转移-state-transfer">五、状态转移（State Transfer）</h3>
+
+<blockquote>
+<p>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，<strong>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&rdquo;状态转化&rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&rdquo;表现层状态转化&rdquo;。</strong></p>
+
+<p>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。</p>
+</blockquote>
+
+<h3 id="六-总结">六、总结</h3>
+
+<blockquote>
+<p>1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源</p>
+
+<p>2）将HTTP作为了一种传输协议，最直观的是使用了HTTP规范，使用标准的HTTP方法来操作资源，GET/PUT/DELETE/POST，实现&rdquo;表现层状态转移&rdquo;。</p>
+
+<p>3）无状态连接，服务器端不应保存过多上下文状态，每个请求应该都是独立的。</p>
+
+<p>4）通过XML，JSON进行数据传递（服务器返回的数据格式，应该尽量使用JSON，避免使用XML。）</p>
+
+<p>5）RESTful 架构的好处：</p>
+
+<p>​ 互联网环境下，任何应用的架构和API容易被理解</p>
+
+<p>​ 分布式环境下，任何请求都可以被发送到任意服务器</p>
+
+<p>​ 异构环境下， 任何环境的访问和使用方式都统一</p>
+</blockquote>
+
+<hr>
+
+<h3 id="七-参考">七、参考</h3>
+
+<p>RESTful 架构详解：<a href="https://www.runoob.com/w3cnote/restful-architecture.html">https://www.runoob.com/w3cnote/restful-architecture.html</a></p>
+
+<p>RESTful 架构（阮）：<a href="http://www.ruanyifeng.com/blog/2011/09/restful.html">http://www.ruanyifeng.com/blog/2011/09/restful.html</a></p>
+
+<p><a href="https://www.jianshu.com/p/e77d2f60aa5d">https://www.jianshu.com/p/e77d2f60aa5d</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>icejam </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://orrrz.github.io/posts/restful-api/>https://orrrz.github.io/posts/restful-api/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://orrrz.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://orrrz.github.io/posts/leetcode/" class="prev" rel="prev" title="LeetCode"><i class="iconfont icon-left"></i>&nbsp;LeetCode</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2011 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://orrrz.github.io/">icejam</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

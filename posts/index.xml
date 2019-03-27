@@ -6,10 +6,29 @@
     <description>Recent content in Posts on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2019 22:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 19:55:23 +0800</lastBuildDate>
     
 	<atom:link href="https://orrrz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RESTful API</title>
+      <link>https://orrrz.github.io/posts/restful-api/</link>
+      <pubDate>Wed, 27 Mar 2019 19:55:23 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/restful-api/</guid>
+      <description>RESTful API RESTful：符合REST架构风格的网络API接口。
+REST：Representational State Transfer 表现层状态转移
+一、起源 REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
+RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
+二、Richardson Maturity Model（理查德森模型） http://martinfowler.com/articles/richardsonMaturityModel.html
+1）Level0（The Swamp of POX）
+不算REST
+根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
+2）Level 1 Resources
+拥有了面向资源的特征，每个资源都有自己相对应的URI。
+3）Level 2 HTTP verbs</description>
+    </item>
     
     <item>
       <title>LeetCode</title>
