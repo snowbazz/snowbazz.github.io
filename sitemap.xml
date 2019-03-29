@@ -2,88 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-    <url>
-      <loc>https://orrrz.github.io/posts/restful-api/</loc>
-      
-      <lastmod>2019-03-27T19:55:23+08:00</lastmod>
-      
-      
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/posts/restful-api/</loc>
+    <lastmod>2019-03-27T19:55:23+08:00</lastmod>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/posts/leetcode/</loc>
-      
-      <lastmod>2019-03-20T22:27:15+08:00</lastmod>
-      
-      
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/posts/leetcode/</loc>
+    <lastmod>2019-03-20T22:27:15+08:00</lastmod>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/posts/git-memo/</loc>
-      
-      <lastmod>2019-03-20T10:48:50+08:00</lastmod>
-      
-      
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/posts/git-memo/</loc>
+    <lastmod>2019-03-20T10:48:50+08:00</lastmod>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/posts/some-sentences/</loc>
-      
-      <lastmod>2019-03-07T11:38:10+08:00</lastmod>
-      
-      
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/posts/some-sentences/</loc>
+    <lastmod>2019-03-07T11:38:10+08:00</lastmod>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/categories/</loc>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/</loc>
-      
-      <lastmod>2019-03-27T19:55:23+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/</loc>
+    <lastmod>2019-03-27T19:55:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/posts/</loc>
-      
-      <lastmod>2019-03-27T19:55:23+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/posts/</loc>
+    <lastmod>2019-03-27T19:55:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    <url>
-      <loc>https://orrrz.github.io/tags/</loc>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
+  <url>
+    <loc>https://orrrz.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
   
 </urlset>

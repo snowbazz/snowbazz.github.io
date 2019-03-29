@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ICE JAM on ICE JAM</title>
+    <title>ICE JAM</title>
     <link>https://orrrz.github.io/</link>
-    <description>Recent content in ICE JAM on ICE JAM</description>
+    <description>Recent content on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Mar 2019 19:55:23 +0800</lastBuildDate>
-    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://orrrz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>RESTful API</title>
@@ -15,182 +17,15 @@
       <pubDate>Wed, 27 Mar 2019 19:55:23 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/restful-api/</guid>
-      <description>
-
-&lt;h1 id=&#34;restful-api&#34;&gt;RESTful API&lt;/h1&gt;
-
-&lt;p&gt;RESTful：符合REST架构风格的网络API接口。&lt;/p&gt;
-
-&lt;p&gt;REST：Representational State Transfer  表现层状态转移&lt;/p&gt;
-
-&lt;h3 id=&#34;一-起源&#34;&gt;一、起源&lt;/h3&gt;
-
-&lt;p&gt;​   REST这个词，是&lt;a href=&#34;http://en.wikipedia.org/wiki/Roy_Fielding&#34;&gt;Roy Thomas Fielding&lt;/a&gt;在他2000年的&lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;&gt;博士论文&lt;/a&gt;中提出的。&lt;/p&gt;
-
-&lt;p&gt;​   RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）&lt;/p&gt;
-
-&lt;h3 id=&#34;二-richardson-maturity-model-理查德森模型&#34;&gt;二、Richardson Maturity Model（理查德森模型）&lt;/h3&gt;
-
-&lt;p&gt;​   &lt;a href=&#34;http://martinfowler.com/articles/richardsonMaturityModel.html&#34;&gt;http://martinfowler.com/articles/richardsonMaturityModel.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;1）Level0（The Swamp of POX）&lt;/p&gt;
-
-&lt;p&gt;​   不算REST的一部分。&lt;/p&gt;
-
-&lt;p&gt;​   根据交换的XML内容操作所有的资源，类似&lt;a href=&#34;http://www.w3school.com.cn/soap/soap_intro.asp&#34;&gt;SOAP&lt;/a&gt;（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。&lt;/p&gt;
-
-&lt;p&gt;2）Level 1 Resources&lt;/p&gt;
-
-&lt;p&gt;​   拥有了面向资源的特征，每个资源都有自己相对应的URI。&lt;/p&gt;
-
-&lt;p&gt;3）Level 2 HTTP verbs&lt;/p&gt;
-
-&lt;p&gt;​   使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范&lt;/p&gt;
-
-&lt;p&gt;4）Level 3 Hypermedia Controls&lt;/p&gt;
-
-&lt;p&gt;​   这一层想解决的问题是 service discoverability 和 self-documenting。&lt;/p&gt;
-
-&lt;p&gt;​   REST架构希望赋予标准的, 高度可扩展的标准语义及表现形式。RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。​&lt;/p&gt;
-
-&lt;p&gt;​   Hypermedia API的设计被称为&lt;a href=&#34;http://en.wikipedia.org/wiki/HATEOAS&#34;&gt;HATEOAS&lt;/a&gt;(Hypermedia As The Engine Of Application State )，Github的API就是这种设计。大部分的RESTful接口只做到了Level2 的层次。&lt;/p&gt;
-
-&lt;p&gt;​   访问&lt;a href=&#34;https://api.github.com/&#34;&gt;api.github.com&lt;/a&gt;会得到一个所有可用API的网址列表。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; {
-   &amp;quot;current_user_url&amp;quot;: &amp;quot;https://api.github.com/user&amp;quot;,
-   &amp;quot;authorizations_url&amp;quot;: &amp;quot;https://api.github.com/authorizations&amp;quot;,
-   // ...
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;​   从上面可以看到，如果想获取当前用户的信息，应该去访问&lt;a href=&#34;https://api.github.com/user&#34;&gt;api.github.com/user&lt;/a&gt;，然后就得到了下面结果。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; {
-   &amp;quot;message&amp;quot;: &amp;quot;Requires authentication&amp;quot;,
-   &amp;quot;documentation_url&amp;quot;: &amp;quot;https://developer.github.com/v3&amp;quot;
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;​   上面代码表示，服务器给出了提示信息，以及文档的网址。&lt;/p&gt;
-
-&lt;h3 id=&#34;三-资源-resources&#34;&gt;三、资源（Resources）&lt;/h3&gt;
-
-&lt;p&gt;​   REST省略了主语，即资源表现层。&lt;/p&gt;
-
-&lt;p&gt;​   所谓的&amp;rdquo;资源&amp;rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，&lt;strong&gt;URI是每一个资源的地址或独一无二的标识。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;​   所谓&amp;rdquo;上网&amp;rdquo;，就是与互联网上一系列的&amp;rdquo;资源&amp;rdquo;互动，调用资源的URI&lt;/p&gt;
-
-&lt;h3 id=&#34;四-表现层-representation&#34;&gt;四、表现层（Representation）&lt;/h3&gt;
-
-&lt;p&gt;​   &amp;ldquo;资源&amp;rdquo;是一种信息实体，它可以有多种外在表现形式。&lt;strong&gt;我们把&amp;rdquo;资源&amp;rdquo;具体呈现出来的形式，叫做它的&amp;rdquo;表现层&amp;rdquo;（Representation）。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;​   比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&amp;rdquo;表现层&amp;rdquo;的描述。&lt;/p&gt;
-
-&lt;h3 id=&#34;五-状态转移-state-transfer&#34;&gt;五、状态转移（State Transfer）&lt;/h3&gt;
-
-&lt;p&gt;​   互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，&lt;strong&gt;如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&amp;rdquo;状态转化&amp;rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&amp;rdquo;表现层状态转化&amp;rdquo;。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;​   客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。&lt;/p&gt;
-
-&lt;h3 id=&#34;六-http-verbs&#34;&gt;六、HTTP verbs&lt;/h3&gt;
-
-&lt;h5 id=&#34;1-get&#34;&gt;1）GET&lt;/h5&gt;
-
-&lt;p&gt;向指定资源请求数据，一般用来获取，查询资源信息，较不安全，幂等。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;200（OK） - 表示已在响应中发出&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;204（无内容） - 资源有空表示&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;301（Moved Permanently） - 资源的URI已被更新&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;303（See Other） - 其他（如，负载均衡）&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;304（not modified）- 资源未更改（缓存）&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;400 （bad request）- 指代坏请求（如，参数错误）&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;404 （not found）- 资源不存在&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;406 （not acceptable）- 服务端不支持所需表示&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;500 （internal server error）- 通用错误响应&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;503 （Service Unavailable）- 服务端当前无法处理请求&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;2-post&#34;&gt;2）POST&lt;/h5&gt;
-
-&lt;p&gt;​   向指定资源提交数据进行请求处理，一般用来更新资源信息，不幂等（POST请求服务器执行一个动作，多次请求会多次执行），请求显示在请求体里面，不会被缓存，对请求长度无限制。&lt;/p&gt;
-
-&lt;h5 id=&#34;3-put&#34;&gt;3）PUT&lt;/h5&gt;
-
-&lt;p&gt;通过替换的方式更新资源，不安全，幂等。&lt;/p&gt;
-
-&lt;h5 id=&#34;4-delete&#34;&gt;4）DELETE&lt;/h5&gt;
-
-&lt;p&gt;不安全、幂等，删除。&lt;/p&gt;
-
-&lt;h5 id=&#34;5-patch&#34;&gt;5）PATCH&lt;/h5&gt;
-
-&lt;p&gt;​   不幂等，理论上讲PUT所做的更新是对整个对象来说的，一般都是将整个对象传输到后台进行整体修改，如果我只有一个字段想要改变，也要这么做，有点浪费带宽，所以出现了PATCH：&lt;strong&gt;局部更新&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;Github的API则支持使用PATCH方法来进行issue的更新，例如:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PATCH /repos/:owner/:repo/issues/:number
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 本文无关...
-@PathVariable：自动将rest请求匹配到同名参数上
-
-@ModelAttribute：自动将请求的form表单参数 组装成对象
-
-@RequestBody:自动将请求的json参数 组装成对象
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;什么是幂等？&lt;/p&gt;
-
-&lt;p&gt;Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N &amp;gt; 0 identical requests is the same as for a single request.
-——HTTP/1.1规范中幂等性的定义&lt;/p&gt;
-
-&lt;p&gt;​ 从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。说白了就是，&lt;strong&gt;同一个请求，发送一次和发送N次效果是一样的！&lt;/strong&gt;幂等性是分布式系统设计中十分重要的概念&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;七-总结&#34;&gt;七、总结&lt;/h3&gt;
-
-&lt;p&gt;1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源&lt;/p&gt;
-
-&lt;p&gt;2）将HTTP作为了一种传输协议，最直观的是使用了HTTP规范，使用标准的HTTP方法来操作资源，GET/PUT/DELETE/POST，实现&amp;rdquo;表现层状态转移&amp;rdquo;。&lt;/p&gt;
-
-&lt;p&gt;3）无状态连接，服务器端不应保存过多上下文状态，每个请求应该都是独立的。&lt;/p&gt;
-
-&lt;p&gt;4）通过XML，JSON进行数据传递（服务器返回的数据格式，应该尽量使用JSON，避免使用XML。）&lt;/p&gt;
-
-&lt;p&gt;5）RESTful 架构的好处：&lt;/p&gt;
-
-&lt;p&gt;​   a. 互联网环境下，任何应用的架构和API容易被理解&lt;/p&gt;
-
-&lt;p&gt;​   b. 分布式环境下，任何请求都可以被发送到任意服务器&lt;/p&gt;
-
-&lt;p&gt;​   c. 异构环境下， 任何环境的访问和使用方式都统一&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;h3 id=&#34;八-参考&#34;&gt;八、参考&lt;/h3&gt;
-
-&lt;p&gt;RESTful 架构详解：&lt;a href=&#34;https://www.runoob.com/w3cnote/restful-architecture.html&#34;&gt;https://www.runoob.com/w3cnote/restful-architecture.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;RESTful 架构（阮）：&lt;a href=&#34;http://www.ruanyifeng.com/blog/2011/09/restful.html&#34;&gt;http://www.ruanyifeng.com/blog/2011/09/restful.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/e77d2f60aa5d&#34;&gt;https://www.jianshu.com/p/e77d2f60aa5d&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>RESTful API RESTful：符合REST架构风格的网络API接口。
+REST：Representational State Transfer 表现层状态转移
+一、起源 ​ REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
+​ RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
+二、Richardson Maturity Model（理查德森模型） ​ http://martinfowler.com/articles/richardsonMaturityModel.html
+1）Level0（The Swamp of POX）
+​ 不算REST的一部分。
+​ 根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
+2）Level 1 Resources</description>
     </item>
     
     <item>
@@ -199,72 +34,8 @@
       <pubDate>Wed, 20 Mar 2019 22:27:15 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/leetcode/</guid>
-      <description>
-
-&lt;h2 id=&#34;leetcode-解题记录&#34;&gt;LeetCode 解题记录&lt;/h2&gt;
-
-&lt;h3 id=&#34;709-to-lower-case&#34;&gt;709 To Lower Case&lt;/h3&gt;
-
-&lt;p&gt;Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;chars[i] += &#39;a&#39; - &#39;A&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;771-jewels-and-stones&#34;&gt;771 Jewels and Stones&lt;/h3&gt;
-
-&lt;p&gt;You&amp;rsquo;re given strings &lt;code&gt;J&lt;/code&gt; representing the types of stones that are jewels, and &lt;code&gt;S&lt;/code&gt; representing the stones you have.  Each character in &lt;code&gt;S&lt;/code&gt; is a type of stone you have.  You want to know how many of the stones you have are also jewels.&lt;/p&gt;
-
-&lt;p&gt;The letters in &lt;code&gt;J&lt;/code&gt; are guaranteed distinct, and all characters in &lt;code&gt;J&lt;/code&gt; and &lt;code&gt;S&lt;/code&gt; are letters. Letters are case sensitive, so &lt;code&gt;&amp;quot;a&amp;quot;&lt;/code&gt; is considered a different type of stone from &lt;code&gt;&amp;quot;A&amp;quot;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;S&lt;/code&gt; and &lt;code&gt;J&lt;/code&gt; will consist of letters and have length at most 50.&lt;/li&gt;
-&lt;li&gt;The characters in &lt;code&gt;J&lt;/code&gt; are distinct.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Solution 1 :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int numJewelsInStones(String J, String S) {
-        int count = 0;
-        char[] jChar = J.toCharArray();
-        char[] sChar = S.toCharArray();
-        Map&amp;lt;Character, Integer&amp;gt; map = new HashMap&amp;lt;Character, Integer&amp;gt;();
-        for (int i = 0; i &amp;lt; jChar.length; i++) {
-            map.put(jChar[i], i);
-            
-        }
-        for (int j = 0; j &amp;lt; sChar.length; j++) {
-                if (map.containsKey(sChar[j])) {
-                    count ++;
-                }
-            }
-        return count;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Solution 2 :&lt;/p&gt;
-
-&lt;p&gt;tips : 因为使用了break，所以J、S的循环先后顺序不能调换，如不用break就无所谓顺序。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int numJewelsInStones(String J, String S) {
-    	int count = 0;
-        for(char s : S.toCharArray()) {
-            for (char j : S.toCharArray()) {
-                if (j == s) {
-                    count ++;
-                    break;
-                }
-            }
-        }
-        return count;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>LeetCode 解题记录 709 To Lower Case Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
+chars[i] += &#39;a&#39; - &#39;A&#39;;  771 Jewels and Stones You&amp;rsquo;re given strings J representing the types of stones that are jewels, and S representing the stones you have. Each character in S is a type of stone you have. You want to know how many of the stones you have are also jewels.</description>
     </item>
     
     <item>
@@ -273,182 +44,10 @@
       <pubDate>Wed, 20 Mar 2019 10:48:50 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/git-memo/</guid>
-      <description>
-
-&lt;h4 id=&#34;hugo&#34;&gt;HUGO&lt;/h4&gt;
-
-&lt;p&gt;Add some content&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;hugo new posts/xxx.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Start the Hugo Server&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 重新生成静态blog
-# -t 主题
-hugo -t=hyde -D    
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上传到orrrz.github.io&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;cd public
-
-git init git add .
-
-git commit -m &#39;xxx&#39;
-
-git remote add origin git@github.com:username/username.github.io.git
-
-git push -u origin master
-# --force
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;一键部署&#34;&gt;一键部署&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 在根目录新建 deploy.sh ，复制以下代码并保存
-#!/bin/bash
-
-echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
-msg=&amp;quot;rebuilding site `date`&amp;quot;
-if [ $# -eq 1 ]
-then msg=&amp;quot;$1&amp;quot;
-fi
-
-# 修改为自己的theme
-hugo -t=theme -D
-
-cd public
-git add -A
-git commit -m &amp;quot;$msg&amp;quot;
-git push --force -u origin master
-
-cd ../
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果是linux系统还需要给脚本添加可执行权限&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;chmod +x deploy.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;启动&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;./deploy.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr&gt;
-
-&lt;h4 id=&#34;创建git-仓库&#34;&gt;创建git 仓库&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;mkdir xxx
-cd xxx
-git init
-
-Initialized empty Git repository in /home/xxx/.git/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;添加一些文件并提交&#34;&gt;添加一些文件并提交&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;touch readme.md
-git add readme.md
-git commit -m &#39;for test&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;push前应先将远程repo修改pull下来&#34;&gt;push前应先将远程repo修改pull下来&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git pull origin master
-
-git push -u origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;从远程克隆仓库&#34;&gt;从远程克隆仓库&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# SSH协议/HTTPS协议地址
-git clone SSH/HTTPS
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;查看分支&#34;&gt;查看分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch
-# 查看本地和远程的分支情况
-git branch -a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;创建分支&#34;&gt;创建分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch xxx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;切换分支&#34;&gt;切换分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 从当前branch切换到 xxx
-git checkout xxx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;创建同时切换分支&#34;&gt;创建同时切换分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 在当前分支上创建分支 dev，并切换到 dev
-git checkout -b dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;删除分支&#34;&gt;删除分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 不能在要删除的分支上操作
-git branch -d dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;将本地分支推送到远程分支&#34;&gt;将本地分支推送到远程分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 提交本地的 dev 分支到远程仓库 origin 的 dev 分支
-git push origin dev:dev
-# 提交本地的 dev 分支到远程仓库 origin 的 remotedev 分支
-git push orgin dev:remotedev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;删除远程分支&#34;&gt;删除远程分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 删除远程仓库的 remotetest 分支，本地的不收影响
-git push origin :remotedev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;拉取远程分支&#34;&gt;拉取远程分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git pull &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
-# 比如 将远程 origin 仓库 testpull 分支拉取下来
-git pull origin testpull
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;本地分支与远程分支关联&#34;&gt;本地分支与远程分支关联&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
-# 本地的 dev 分支和远程的 origin/dev 分支关联后，可以直接使用 git pull
-git branch --set-upstream-to=origin/dev dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;合并分支&#34;&gt;合并分支&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# 将test合并到当前分支上
-git merge test
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;git-checkout-远程分支&#34;&gt;git checkout 远程分支&lt;/h4&gt;
-
-&lt;p&gt;有时候在远程仓库的基础上，拉取特定的某一个分支&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;# localdev 是本地分支， origin/dev 是远程的 dev 分支
-git checkout -b localdev origin/dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;git-fetch&#34;&gt;git fetch&lt;/h4&gt;
-
-&lt;p&gt;git fetch 和 git pull 很像，但 git fetch 要柔和一点，git pull 会将远程的命令拉下来直接和本地的合并。git fetch 会先获取信息，但不合并。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git fetch origin dev
-# 比较本地版本和远程版本
-git log -p dev origin/dev
-# 合并远程 dev 版本
-git merge origin/dev
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>HUGO Add some content
+hugo new posts/xxx.md  Start the Hugo Server
+# 重新生成静态blog # -t 主题 hugo -t=hyde -D  上传到orrrz.github.io
+cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin git@github.com:username/username.github.io.git git push -u origin master # --force  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &amp;quot;$msg&amp;quot; git push --force -u origin master cd .</description>
     </item>
     
     <item>
@@ -457,10 +56,8 @@ git merge origin/dev
       <pubDate>Thu, 07 Mar 2019 11:38:10 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/some-sentences/</guid>
-      <description>&lt;p&gt;‘I wish you all enough courage to be yourselves without need for approval or permission from anyone&amp;hellip;’&lt;/p&gt;
-
-&lt;p&gt;‘I wish you enough humility to stop thinking you are better than anyone&amp;hellip; ‘&lt;/p&gt;
-</description>
+      <description>‘I wish you all enough courage to be yourselves without need for approval or permission from anyone&amp;hellip;’
+‘I wish you enough humility to stop thinking you are better than anyone&amp;hellip; ‘</description>
     </item>
     
   </channel>
