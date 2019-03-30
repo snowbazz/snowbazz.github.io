@@ -77,16 +77,21 @@
 
 <p>Start the Hugo Server</p>
 
-<pre><code class="language-git"># 重新生成静态blog
-# -t 主题
+<pre><code class="language-git"># 启动本地服务器
+hugo server -t=we -D
+# 访问地址
+127.0.0.1：1313
+# 重新生成静态blog，t=theme
 hugo -t=hyde -D    
 </code></pre>
 
-<p>上传到orrrz.github.io</p>
+<p>部署到orrrz.github.io</p>
 
 <pre><code class="language-git">cd public
 
-git init git add .
+git init 
+
+git add .
 
 git commit -m 'xxx'
 

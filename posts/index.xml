@@ -17,14 +17,15 @@
       <pubDate>Wed, 27 Mar 2019 19:55:23 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/restful-api/</guid>
-      <description>RESTful API RESTful：符合REST架构风格的网络API接口。
-REST：Representational State Transfer 表现层状态转移
-一、起源 ​ REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
-​ RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
-二、Richardson Maturity Model（理查德森模型） ​ http://martinfowler.com/articles/richardsonMaturityModel.html
+      <description>一、概述： RESTful：符合REST架构风格的网络API接口。
+REST：Representational State Transfer 表现层状态转移，是一种架构约束规范和原则。
+ REST本身并没有创造新的技术、组件或服务，而隐藏在RESTful背后的理念就是使用Web的现有特征和能力， 更好地使用现有Web标准中的一些准则和约束。虽然REST本身受Web技术的影响很深， 但是理论上REST架构风格并不是绑定在HTTP上，只不过目前HTTP是唯一与REST相关的实例。 所以我们这里描述的REST也是通过HTTP实现的REST。
+ 二、起源 REST这个词，是Roy Thomas Fielding在他2000年的博士论文中提出的。
+RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
+三、Richardson Maturity Model（理查德森模型） http://martinfowler.com/articles/richardsonMaturityModel.html
 1）Level0（The Swamp of POX）
-​ 不算REST的一部分。
-​ 根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
+不算REST的一部分。
+根据交换的XML内容操作所有的资源，类似SOAP（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。
 2）Level 1 Resources</description>
     </item>
     
@@ -46,7 +47,7 @@ chars[i] += &#39;a&#39; - &#39;A&#39;;  771 Jewels and Stones You&amp;rsquo;re g
       <guid>https://orrrz.github.io/posts/git-memo/</guid>
       <description>HUGO Add some content
 hugo new posts/xxx.md  Start the Hugo Server
-# 重新生成静态blog # -t 主题 hugo -t=hyde -D  上传到orrrz.github.io
+# 启动本地服务器 hugo server -t=we -D # 访问地址 127.0.0.1：1313 # 重新生成静态blog，t=theme hugo -t=hyde -D  部署到orrrz.github.io
 cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin git@github.com:username/username.github.io.git git push -u origin master # --force  一键部署 # 在根目录新建 deploy.sh ，复制以下代码并保存 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi # 修改为自己的theme hugo -t=theme -D cd public git add -A git commit -m &amp;quot;$msg&amp;quot; git push --force -u origin master cd .</description>
     </item>
     
