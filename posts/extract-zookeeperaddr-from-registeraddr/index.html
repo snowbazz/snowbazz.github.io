@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Some Sentences</title>
+  <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.54.0" />
@@ -63,12 +63,50 @@
 
 
   <div id="article">
-   <div class="article-title">Some Sentences</div>
-   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2019-03-07</small></p> <hr/>
+   <div class="article-title"></div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 0001-01-01</small></p> <hr/>
    <div class="post">
-     <p>‘I wish you all enough courage to be yourselves without need for approval or permission from anyone&hellip;’</p>
+     <p>从 Dubbo.zookeeper 注册地址提取 zookeeper 地址</p>
 
-<p>‘I wish you enough humility to stop thinking you are better than anyone&hellip; ‘</p>
+<pre><code class="language-java">import java.util.Optional;
+
+public class ZookeeperURL {
+    public static final String PREFIX = &quot;zookeeper://&quot;;
+    public static final String BACKUP = &quot;backup=&quot;;
+
+    public static Optional&lt;String&gt; convertDubboRegistryToZookeeperURL(String dubboRegistry){
+        StringBuilder zookeeperURL = new StringBuilder();
+        if(dubboRegistry != null &amp;&amp; dubboRegistry.startsWith(PREFIX)){
+            dubboRegistry = dubboRegistry.substring(PREFIX.length());
+            int index = dubboRegistry.indexOf(&quot;?&quot;);
+            if(index &gt; 0){
+                zookeeperURL.append(dubboRegistry.substring(0, index));
+                dubboRegistry = dubboRegistry.substring(index + 1);
+                String[] dubboRegistries = dubboRegistry.split(&quot;&amp;&quot;);
+                for (int i = 0; i &lt; dubboRegistries.length; i++) {
+                    if(dubboRegistries[i].startsWith(BACKUP)){
+                        String[] backups = dubboRegistries[i].substring(BACKUP.length()).split(&quot;,&quot;);
+                        for (int j = 0; j &lt; backups.length; j++) {
+                            zookeeperURL.append(&quot;,&quot;).append(backups[i]);
+                        }
+                    }
+                }
+            } else {
+                zookeeperURL.append(dubboRegistry);
+            }
+            return Optional.of(zookeeperURL.toString());
+        }
+        return Optional.empty();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(convertDubboRegistryToZookeeperURL(&quot;zookeeper://localhost:2181&quot;));
+        System.out.println(convertDubboRegistryToZookeeperURL(&quot;zookeeper://localhost:2181?client=zkclient&quot;));
+        System.out.println(convertDubboRegistryToZookeeperURL(&quot;zookeeper://localhost:2181?backup=localhost:2182,localhost:2183&quot;));
+        System.out.println(convertDubboRegistryToZookeeperURL(&quot;zookeeper://localhost:2181?client=zkclient&amp;backup=localhost:2182,localhost:2183&quot;));
+    }
+}
+</code></pre>
 
    </div>
  </div>
@@ -78,8 +116,8 @@
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
  <ul class="pager">
-      &nbsp;<li class="previous"><a href="https://orrrz.github.io/posts/git-memo/"> Git Memo</a></li>
-      &nbsp;<li class="next"><a href="https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/"> </a></li>
+      &nbsp;<li class="previous"><a href="https://orrrz.github.io/posts/some-sentences/"> Some Sentences</a></li>
+     
 </ul>
 
 
