@@ -6,10 +6,20 @@
     <description>Recent content on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Mar 2019 19:55:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2019 21:32:02 +0800</lastBuildDate>
     
 	<atom:link href="https://orrrz.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Extract ZookeeperAddr From RegisterAddr</title>
+      <link>https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/</link>
+      <pubDate>Sat, 30 Mar 2019 21:32:02 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/</guid>
+      <description>从 Dubbo.zookeeper 注册地址提取 zookeeper 地址
+import java.util.Optional; public class ZookeeperURL { public static final String PREFIX = &amp;quot;zookeeper://&amp;quot;; public static final String BACKUP = &amp;quot;backup=&amp;quot;; public static Optional&amp;lt;String&amp;gt; convertDubboRegistryToZookeeperURL(String dubboRegistry){ StringBuilder zookeeperURL = new StringBuilder(); if(dubboRegistry != null &amp;amp;&amp;amp; dubboRegistry.startsWith(PREFIX)){ dubboRegistry = dubboRegistry.substring(PREFIX.length()); int index = dubboRegistry.indexOf(&amp;quot;?&amp;quot;); if(index &amp;gt; 0){ zookeeperURL.append(dubboRegistry.substring(0, index)); dubboRegistry = dubboRegistry.substring(index + 1); String[] dubboRegistries = dubboRegistry.split(&amp;quot;&amp;amp;&amp;quot;); for (int i = 0; i &amp;lt; dubboRegistries.length; i++) { if(dubboRegistries[i].</description>
+    </item>
     
     <item>
       <title>RESTful API</title>
@@ -59,16 +69,6 @@ cd public git init git add . git commit -m &#39;xxx&#39; git remote add origin g
       <guid>https://orrrz.github.io/posts/some-sentences/</guid>
       <description>‘I wish you all enough courage to be yourselves without need for approval or permission from anyone&amp;hellip;’
 ‘I wish you enough humility to stop thinking you are better than anyone&amp;hellip; ‘</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/</guid>
-      <description>从 Dubbo.zookeeper 注册地址提取 zookeeper 地址
-import java.util.Optional; public class ZookeeperURL { public static final String PREFIX = &amp;quot;zookeeper://&amp;quot;; public static final String BACKUP = &amp;quot;backup=&amp;quot;; public static Optional&amp;lt;String&amp;gt; convertDubboRegistryToZookeeperURL(String dubboRegistry){ StringBuilder zookeeperURL = new StringBuilder(); if(dubboRegistry != null &amp;amp;&amp;amp; dubboRegistry.startsWith(PREFIX)){ dubboRegistry = dubboRegistry.substring(PREFIX.length()); int index = dubboRegistry.indexOf(&amp;quot;?&amp;quot;); if(index &amp;gt; 0){ zookeeperURL.append(dubboRegistry.substring(0, index)); dubboRegistry = dubboRegistry.substring(index + 1); String[] dubboRegistries = dubboRegistry.split(&amp;quot;&amp;amp;&amp;quot;); for (int i = 0; i &amp;lt; dubboRegistries.length; i++) { if(dubboRegistries[i].</description>
     </item>
     
   </channel>
