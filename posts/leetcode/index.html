@@ -70,67 +70,7 @@
 
 <h2 id="leetcode-解题记录">LeetCode 解题记录</h2>
 
-<h3 id="709-to-lower-case">709 To Lower Case</h3>
-
-<p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p>
-
-<pre><code class="language-java">chars[i] += 'a' - 'A';
-</code></pre>
-
-<h3 id="771-jewels-and-stones">771 Jewels and Stones</h3>
-
-<p>You&rsquo;re given strings <code>J</code> representing the types of stones that are jewels, and <code>S</code> representing the stones you have.  Each character in <code>S</code> is a type of stone you have.  You want to know how many of the stones you have are also jewels.</p>
-
-<p>The letters in <code>J</code> are guaranteed distinct, and all characters in <code>J</code> and <code>S</code> are letters. Letters are case sensitive, so <code>&quot;a&quot;</code> is considered a different type of stone from <code>&quot;A&quot;</code>.</p>
-
-<p><strong>Note:</strong></p>
-
-<ul>
-<li><code>S</code> and <code>J</code> will consist of letters and have length at most 50.</li>
-<li>The characters in <code>J</code> are distinct.</li>
-</ul>
-
-<p>Solution 1 :</p>
-
-<pre><code class="language-java">class Solution {
-    public int numJewelsInStones(String J, String S) {
-        int count = 0;
-        char[] jChar = J.toCharArray();
-        char[] sChar = S.toCharArray();
-        Map&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();
-        for (int i = 0; i &lt; jChar.length; i++) {
-            map.put(jChar[i], i);
-            
-        }
-        for (int j = 0; j &lt; sChar.length; j++) {
-                if (map.containsKey(sChar[j])) {
-                    count ++;
-                }
-            }
-        return count;
-    }
-}
-</code></pre>
-
-<p>Solution 2 :</p>
-
-<p>tips : 因为使用了break，所以J、S的循环先后顺序不能调换，如不用break就无所谓顺序。</p>
-
-<pre><code class="language-java">class Solution {
-    public int numJewelsInStones(String J, String S) {
-    	int count = 0;
-        for(char s : S.toCharArray()) {
-            for (char j : S.toCharArray()) {
-                if (j == s) {
-                    count ++;
-                    break;
-                }
-            }
-        }
-        return count;
-    }
-}
-</code></pre>
+<p>迁移至<a href="https://github.com/orrrz/Leetcode-algorithm-solution">Leetcode-algorithm-solution</a></p>
 
    </div>
  </div>

@@ -45,8 +45,7 @@ RESTful架构的本意是在符合架构原理的前提下，理解和评估以�
       <pubDate>Wed, 20 Mar 2019 22:27:15 +0800</pubDate>
       
       <guid>https://orrrz.github.io/posts/leetcode/</guid>
-      <description>LeetCode 解题记录 709 To Lower Case Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
-chars[i] += &#39;a&#39; - &#39;A&#39;;  771 Jewels and Stones You&amp;rsquo;re given strings J representing the types of stones that are jewels, and S representing the stones you have. Each character in S is a type of stone you have. You want to know how many of the stones you have are also jewels.</description>
+      <description>LeetCode 解题记录 迁移至Leetcode-algorithm-solution</description>
     </item>
     
     <item>
