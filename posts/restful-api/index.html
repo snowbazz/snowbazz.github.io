@@ -131,31 +131,39 @@
 
 <p>上面代码表示，服务器给出了提示信息，以及文档的网址。</p>
 
-<h3 id="四-资源-resources">四、资源（Resources）</h3>
+<h3 id="四-理解rest">四、理解REST</h3>
+
+<p>以下通过对REST（Representational State Transfer）每个单词的解析，了解什么是REST。</p>
+
+<h5 id="1-资源-resources">1、资源（Resources）</h5>
 
 <p>REST省略了主语，即资源表现层状态转移。</p>
 
 <p>所谓的&rdquo;资源&rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，<strong>URI是每一个资源的地址或独一无二的标识。</strong></p>
 
-<p>所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI</p>
+<p>所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI。</p>
 
-<h3 id="五-表现层-representation">五、表现层（Representation）</h3>
+<p>面向资源是REST最明显的特征，对于同一资源的一组不同的操作。</p>
+
+<h5 id="2-表现层-representation">2、表现层（Representation）</h5>
 
 <p>&ldquo;资源&rdquo;是一种信息实体，它可以有多种外在表现形式。<strong>我们把&rdquo;资源&rdquo;具体呈现出来的形式，叫做它的&rdquo;表现层&rdquo;（Representation）。</strong></p>
 
 <p>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&rdquo;表现层&rdquo;的描述。</p>
 
-<h3 id="六-状态转移-state-transfer">六、状态转移（State Transfer）</h3>
+<h5 id="3-状态转移-state-transfer">3、状态转移（State Transfer）</h5>
 
 <p>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，<strong>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&rdquo;状态转化&rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&rdquo;表现层状态转化&rdquo;。</strong></p>
 
 <p>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。</p>
 
-<h3 id="七-http-verbs">七、HTTP verbs</h3>
+<h3 id="五-http-verbs">五、HTTP verbs</h3>
+
+<p>七个HTTP方法：GET / POST / PUT / DELETE / PATCH / HEAD/ OPTIONS，只记录常用的4个。</p>
 
 <h5 id="1-get">1）GET</h5>
 
-<p>向指定资源请求数据，一般用来获取，查询资源信息，较不安全，幂等。</p>
+<p>向指定资源请求数据，一般用来获取，查询资源信息，安全，幂等。</p>
 
 <ul>
 <li><p>200（OK） - 表示已在响应中发出</p></li>
@@ -181,15 +189,73 @@
 
 <h5 id="2-post">2）POST</h5>
 
-<p>向指定资源提交数据进行请求处理，一般用来更新资源信息，不幂等（POST请求服务器执行一个动作，多次请求会多次执行），请求显示在请求体里面，不会被缓存，对请求长度无限制。</p>
+<ul>
+<li><p>向指定资源提交数据进行请求处理，一般用来更新资源信息</p></li>
+
+<li><p>不幂等（POST请求服务器执行一个动作，多次请求会多次执行）</p></li>
+
+<li><p>请求显示在请求体里面，不会被缓存，对请求长度无限制。</p></li>
+
+<li><p>200（OK） - 如果现有资源已被更改</p></li>
+
+<li><p>201（created） - 如果新资源被创建</p></li>
+
+<li><p>202（accepted） - 已接受处理请求但尚未完成（异步处理）</p></li>
+
+<li><p>301（Moved Permanently） - 资源的 URI 被更新</p></li>
+
+<li><p>303（See Other） - 其他（如， 负载均衡）</p></li>
+
+<li><p>400（bad request） - 指代坏请求</p></li>
+
+<li><p>404 （not found） - 资源不存在</p></li>
+
+<li><p>406 （not acceptable） - 服务端不支持所需表示</p></li>
+
+<li><p>409 （conflict） - 通用冲突</p></li>
+
+<li><p>412 （Precondition Failed） - 前置条件失败（如执行条件更新时的冲突）</p></li>
+
+<li><p>415 （unsupported media type） - 接受到的表示不受支持</p></li>
+
+<li><p>500 （internal server error） - 通用错误响应</p></li>
+
+<li><p>503 （Service Unavailable） - 服务当前无法处理请求</p></li>
+</ul>
 
 <h5 id="3-put">3）PUT</h5>
 
 <p>通过替换的方式更新资源，不安全，幂等。</p>
 
+<ul>
+<li>200 （OK） - 如果已存在资源被更改</li>
+<li>201 （created） - 如果新资源被创建</li>
+<li>301（Moved Permanently） - 资源的 URI 已更改</li>
+<li>303 （See Other） - 其他（如， 负载均衡）</li>
+<li>400 （bad request） - 指代坏请求</li>
+<li>404 （not found） - 资源不存在</li>
+<li>406 （not acceptable） - 服务端不支持所需表示</li>
+<li>409 （conflict） - 通用冲突</li>
+<li>412 （Precondition Failed） - 前置条件失败（如执行条件更新时的冲突）</li>
+<li>415 （unsupported media type） - 接受到的表示不受支持</li>
+<li>500 （internal server error） - 通用错误响应</li>
+<li>503 （Service Unavailable） - 服务当前无法处理请求</li>
+</ul>
+
 <h5 id="4-delete">4）DELETE</h5>
 
 <p>不安全、幂等，删除。</p>
+
+<ul>
+<li>200 （OK） - 资源已被删除</li>
+<li>301 （Moved Permanently） - 资源的 URI 已更改</li>
+<li>303 （See Other） - 其他， 如负载均衡</li>
+<li>400 （bad request） - 指代坏请求</li>
+<li>404 （not found） - 资源不存在</li>
+<li>409 （conflict） - 通用冲突</li>
+<li>500 （internal server error） - 通用错误响应</li>
+<li>503 （Service Unavailable） - 服务端当前无法处理请求</li>
+</ul>
 
 <h5 id="5-patch">5）PATCH</h5>
 
@@ -198,15 +264,6 @@
 <p>例如: Github的API则支持使用PATCH方法来进行issue的更新</p>
 
 <pre><code>PATCH /repos/:owner/:repo/issues/:number
-</code></pre>
-
-<pre><code class="language-java">// 本文无关...
-@PathVariable：自动将rest请求匹配到同名参数上
-
-@ModelAttribute：自动将请求的form表单参数 组装成对象
-
-@RequestBody:自动将请求的json参数 组装成对象
-
 </code></pre>
 
 <blockquote>
@@ -218,7 +275,7 @@
 <p>​ 从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。简单来说就是，同一个请求，发送一次和发送N次效果是一样的！幂等性是分布式系统设计中十分重要的概念</p>
 </blockquote>
 
-<h3 id="八-总结">八、总结</h3>
+<h3 id="六-总结">六、总结</h3>
 
 <p>1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源</p>
 
@@ -238,13 +295,17 @@
 
 <hr>
 
-<h3 id="九-参考">九、参考</h3>
+<h3 id="七-参考">七、参考</h3>
 
 <p>RESTful 架构详解：<a href="https://www.runoob.com/w3cnote/restful-architecture.html">https://www.runoob.com/w3cnote/restful-architecture.html</a></p>
 
 <p>RESTful 架构（阮）：<a href="http://www.ruanyifeng.com/blog/2011/09/restful.html">http://www.ruanyifeng.com/blog/2011/09/restful.html</a></p>
 
 <p><a href="https://www.jianshu.com/p/e77d2f60aa5d">https://www.jianshu.com/p/e77d2f60aa5d</a></p>
+
+<h3 id="八-demo">八、Demo</h3>
+
+<p>新增一个简单的符合RESTful风格的SpringBoot Demo ，详见<a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a></p>
 
    </div>
  </div>
