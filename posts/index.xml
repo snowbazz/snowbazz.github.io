@@ -6,10 +6,26 @@
     <description>Recent content in Posts on ICE JAM</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Mar 2019 21:32:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Apr 2019 02:18:18 +0800</lastBuildDate>
     
 	<atom:link href="https://orrrz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringMVC异常处理</title>
+      <link>https://orrrz.github.io/posts/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 05 Apr 2019 02:18:18 +0800</pubDate>
+      
+      <guid>https://orrrz.github.io/posts/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description>写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。
+在这里我只写常用的两种：
+1）实现HandlerExceptionResolver接口
+2）使用@ControllerAdvice + @ExceptionHandler 注解
+实现HandlerExceptionResolver接口 Spring MVC 提供了异常解析器 HandlerExceptionResolver 接口，将处理器( handler )执行时发生的异常，解析( 转换 )成对应的 ModelAndView 结果。源码如下：
+// HandlerExceptionResolver.java public interface HandlerExceptionResolver { // 解析异常，转换成对应的 ModelAndView 结果 @Nullable ModelAndView resolveException( HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex); }  SpringMVC 处理请求出现异常时，会找到容器中HandlerExceptionResolver类型的对象，即实现 HandlerExceptionResolver 的类。换句话说，HandlerExceptionResolver可以实现全局的异常控制，所有的 controller 发生的异常都会进入其实现类，需要做通用处理。
+自定义异常处理类，实现接口 HandlerExceptionResolver，需要确保此类被扫描并装在到 Spring 容器，代码如下：
+@Component public class CustomerExceptionResolver implements HandlerExceptionResolver { @Override public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) { //1.</description>
+    </item>
     
     <item>
       <title>Extract ZookeeperAddr From RegisterAddr</title>

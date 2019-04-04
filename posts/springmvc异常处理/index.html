@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SpringMVC异常处理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.54.0" />
+  <link href="" rel="alternate" type="application/rss+xml" title="ICE JAM" />
+  <link href="https://orrrz.github.io//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orrrz.github.io//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://orrrz.github.io//"><p class="navbar-brand">ICE JAM</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="/images/me/avatar.jpeg" />
+          <li class="sidebar-brand"><a href="https://orrrz.github.io//"><h1 class="brand">ICE JAM</h1></a><h3>People in the right minds never take pride in their talents.</h3></li>
+          <hr />
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">SpringMVC异常处理</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2019-04-05</small></p> <hr/>
+   <div class="post">
+     
+
+<p>写完 <a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a> 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。</p>
+
+<p>在这里我只写常用的两种：</p>
+
+<p>1）实现<code>HandlerExceptionResolver</code>接口</p>
+
+<p>2）使用<code>@ControllerAdvice</code> + <code>@ExceptionHandler</code> 注解</p>
+
+<h2 id="实现-handlerexceptionresolver-接口">实现<code>HandlerExceptionResolver</code>接口</h2>
+
+<p>Spring MVC 提供了异常解析器 <code>HandlerExceptionResolver</code> 接口，将处理器( handler )执行时发生的异常，解析( 转换 )成对应的 <code>ModelAndView</code> 结果。源码如下：</p>
+
+<pre><code class="language-java">// HandlerExceptionResolver.java
+public interface HandlerExceptionResolver {
+    
+    // 解析异常，转换成对应的 ModelAndView 结果
+    @Nullable
+    ModelAndView resolveException(
+            HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex);
+}
+</code></pre>
+
+<p>SpringMVC 处理请求出现异常时，会找到容器中<code>HandlerExceptionResolver</code>类型的对象，即实现 <code>HandlerExceptionResolver</code> 的类。换句话说，<code>HandlerExceptionResolver</code>可以实现全局的异常控制，所有的 controller 发生的异常都会进入其实现类，需要做通用处理。</p>
+
+<p>自定义异常处理类，实现接口 <code>HandlerExceptionResolver</code>，需要确保此类被扫描并装在到 Spring 容器，代码如下：</p>
+
+<pre><code class="language-java">@Component
+public class CustomerExceptionResolver implements HandlerExceptionResolver {
+    @Override
+    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+        //1. 打印异常信息
+        ex.printStackTrace();
+
+        //2. 保存错误信息、跳转到错误页面！
+        ModelAndView modelAndView = new ModelAndView();
+        // 保存错误信息
+        modelAndView.addObject(&quot;error&quot;, &quot;系统繁忙&quot;+ex.getMessage());
+        // 设置错误页面
+        modelAndView.setViewName(&quot;error&quot;);
+
+        return modelAndView;
+    }
+}
+</code></pre>
+
+<ul>
+<li><p>访问控制器方法，可以捕获后台的所有异常，如果发现异常就会经过上面自定义的<code>CustomerExceptionResolver</code>类，并返回<code>modelAndView</code>。</p></li>
+
+<li><p>可以创建多个自定义异常处理类，但是只会走一个，哪一个先加入到容器就先执行，其他的自定义异常处理类无效。</p></li>
+</ul>
+
+<h2 id="使用-controlleradvice-exceptionhandler-注解">使用<code>@ControllerAdvice</code> + <code>@ExceptionHandler</code> 注解</h2>
+
+<p><code>@ControllerAdvice</code> 注解标注当前 bean 是对 Controller 进行增强，具体增强什么，需要配合<code>@ExceptionHandler</code> 实现对异常的精确处理。</p>
+
+<pre><code>/**
+ * Created by icejam.
+ * 全局异常处理类
+ */
+@ControllerAdvice
+public class BaseExceptionHandler {
+
+    // 自定义异常
+    @ExceptionHandler(SystemException.class)
+    @ResponseBody
+    public Result customHandler(SystemException e) {
+        return new Result(false, StatusCode.ERROR, &quot;系统异常&quot;);
+    }
+
+    // 其他未处理的异常，即通用处理
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public Result error(Exception e) {
+        return new Result(false, StatusCode.ERROR, e.getMessage());
+    }
+    
+    // 如果 @ExceptionHandler 注解中未声明要处理的异常类型，则默认为参数列表中的异常类型，参数对象是controller层抛出的异常对象。
+    @ExceptionHandler()
+    @ResponseBody
+    String handleException(Exception e){
+        return e.getMessage();
+    }
+}
+</code></pre>
+
+<p>这种方式更加灵活，推荐使用</p>
+
+<p>具体案例可以参考我的<a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a> Demo，里面对于全局异常的捕获与处理就是通过这个方式。</p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+     
+      &nbsp;<li class="next"><a href="https://orrrz.github.io/posts/extract-zookeeperaddr-from-registeraddr/"> Extract ZookeeperAddr From RegisterAddr</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; 2019. All rights reserved. </p>
+    </footer>
+ 
+    <script src="https://orrrz.github.io//js/jquery-1.10.2.min.js"></script>
+    <script src="https://orrrz.github.io//js/bootstrap.min.js"></script>
+    <script src="https://orrrz.github.io//js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://orrrz.github.io//js/hc.js"></script>
+</body>
+
+</html>
+
