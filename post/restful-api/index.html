@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>RESTful API - icejam&#39;blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="icejam" /><meta name="description" content="一、概述： RESTful：符合REST架构风格的网络API接口。 REST：Representational State Transfer 表现层状态转移，是一种架构约束" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://orrrz.github.io/post/restful-api/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.dc423cf9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="RESTful API" />
+<meta property="og:description" content="一、概述： RESTful：符合REST架构风格的网络API接口。 REST：Representational State Transfer 表现层状态转移，是一种架构约束" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://orrrz.github.io/post/restful-api/" />
+<meta property="article:published_time" content="2019-03-27T19:55:23&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-27T19:55:23&#43;08:00"/>
+
+<meta itemprop="name" content="RESTful API">
+<meta itemprop="description" content="一、概述： RESTful：符合REST架构风格的网络API接口。 REST：Representational State Transfer 表现层状态转移，是一种架构约束">
+
+
+<meta itemprop="datePublished" content="2019-03-27T19:55:23&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-27T19:55:23&#43;08:00" />
+<meta itemprop="wordCount" content="3805">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RESTful API"/>
+<meta name="twitter:description" content="一、概述： RESTful：符合REST架构风格的网络API接口。 REST：Representational State Transfer 表现层状态转移，是一种架构约束"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Icejam&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Icejam&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">RESTful API</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-27 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#一-概述">一、概述：</a></li>
+<li><a href="#二-起源">二、起源</a></li>
+<li><a href="#三-richardson-maturity-model-理查德森模型">三、Richardson Maturity Model（理查德森模型）</a></li>
+<li><a href="#四-理解rest">四、理解REST</a>
+<ul>
+<li>
+<ul>
+<li><a href="#1-资源-resources">1、资源（Resources）</a></li>
+<li><a href="#2-表现层-representation">2、表现层（Representation）</a></li>
+<li><a href="#3-状态转移-state-transfer">3、状态转移（State Transfer）</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#五-http-verbs">五、HTTP verbs</a>
+<ul>
+<li>
+<ul>
+<li><a href="#1-get">1）GET</a></li>
+<li><a href="#2-post">2）POST</a></li>
+<li><a href="#3-put">3）PUT</a></li>
+<li><a href="#4-delete">4）DELETE</a></li>
+<li><a href="#5-patch">5）PATCH</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#六-总结">六、总结</a></li>
+<li><a href="#七-参考">七、参考</a></li>
+<li><a href="#八-demo">八、Demo</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="一-概述">一、概述：</h3>
+
+<p>RESTful：符合REST架构风格的网络API接口。</p>
+
+<p>REST：Representational State Transfer  表现层状态转移，是一种架构约束规范和原则。</p>
+
+<blockquote>
+<p>REST本身并没有创造新的技术、组件或服务，而隐藏在RESTful背后的理念就是使用Web的现有特征和能力， 更好地使用现有Web标准中的一些准则和约束。虽然REST本身受Web技术的影响很深， 但是理论上REST架构风格并不是绑定在HTTP上，只不过目前HTTP是唯一与REST相关的实例。 所以我们这里描述的REST也是通过HTTP实现的REST。</p>
+</blockquote>
+
+<h3 id="二-起源">二、起源</h3>
+
+<p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding">Roy Thomas Fielding</a>在他2000年的<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">博士论文</a>中提出的。</p>
+
+<p>RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）</p>
+
+<h3 id="三-richardson-maturity-model-理查德森模型">三、Richardson Maturity Model（理查德森模型）</h3>
+
+<p><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">http://martinfowler.com/articles/richardsonMaturityModel.html</a></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp" alt="img" /></p>
+
+<p>1）Level0（The Swamp of POX）</p>
+
+<p>不算REST的一部分。</p>
+
+<p>根据交换的XML内容操作所有的资源，类似<a href="http://www.w3school.com.cn/soap/soap_intro.asp">SOAP</a>（SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信息交换）。</p>
+
+<p>2）Level 1 Resources</p>
+
+<p>拥有了面向资源的特征，每个资源都有自己相对应的URI。</p>
+
+<p>3）Level 2 HTTP verbs</p>
+
+<p>使用了HTTP verbs （GET、POST、PUT、DELETE）对各种资源进行CRUD操作，使得应用程序的接口更加统一，语义更明确，遵循HTTP规范</p>
+
+<p>4）Level 3 Hypermedia Controls</p>
+
+<p>这一层想解决的问题是 service discoverability 和 self-documenting。</p>
+
+<p>REST架构希望赋予标准的, 高度可扩展的标准语义及表现形式。RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。​</p>
+
+<p>Hypermedia API的设计被称为<a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>(Hypermedia As The Engine Of Application State )，Github的API就是这种设计。大部分的RESTful接口只做到了Level2 的层次。</p>
+
+<p>举例：访问<a href="https://api.github.com/">api.github.com</a>会得到一个所有可用API的网址列表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"> <span class="p">{</span>
+   <span class="s2">&#34;current_user_url&#34;</span><span class="o">:</span> <span class="s2">&#34;https://api.github.com/user&#34;</span><span class="p">,</span>
+   <span class="s2">&#34;authorizations_url&#34;</span><span class="o">:</span> <span class="s2">&#34;https://api.github.com/authorizations&#34;</span><span class="p">,</span>
+   <span class="c1">// ...
+</span><span class="c1"></span> <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>从上面可以看到，如果想获取当前用户的信息，应该去访问<a href="https://api.github.com/user">api.github.com/user</a>，然后就得到了下面结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"> <span class="p">{</span>
+   <span class="s2">&#34;message&#34;</span><span class="o">:</span> <span class="s2">&#34;Requires authentication&#34;</span><span class="p">,</span>
+   <span class="s2">&#34;documentation_url&#34;</span><span class="o">:</span> <span class="s2">&#34;https://developer.github.com/v3&#34;</span>
+ <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>上面代码表示，服务器给出了提示信息，以及文档的网址。</p>
+
+<h3 id="四-理解rest">四、理解REST</h3>
+
+<p>以下通过对REST（Representational State Transfer）每个单词的解析，了解什么是REST。</p>
+
+<h5 id="1-资源-resources">1、资源（Resources）</h5>
+
+<p>REST省略了主语，即资源表现层状态转移。</p>
+
+<p>所谓的&rdquo;资源&rdquo;，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，<strong>URI是每一个资源的地址或独一无二的标识。</strong></p>
+
+<p>所谓&rdquo;上网&rdquo;，就是与互联网上一系列的&rdquo;资源&rdquo;互动，调用资源的URI。</p>
+
+<p>面向资源是REST最明显的特征，对于同一资源的一组不同的操作。</p>
+
+<h5 id="2-表现层-representation">2、表现层（Representation）</h5>
+
+<p>&ldquo;资源&rdquo;是一种信息实体，它可以有多种外在表现形式。<strong>我们把&rdquo;资源&rdquo;具体呈现出来的形式，叫做它的&rdquo;表现层&rdquo;（Representation）。</strong></p>
+
+<p>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对&rdquo;表现层&rdquo;的描述。</p>
+
+<h5 id="3-状态转移-state-transfer">3、状态转移（State Transfer）</h5>
+
+<p>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，<strong>如果客户端想要操作服务器，必须通过某种手段，让服务器端发生&rdquo;状态转化&rdquo;（State Transfer）。而这种转化是建立在表现层之上的，所以就是&rdquo;表现层状态转化&rdquo;。</strong></p>
+
+<p>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。</p>
+
+<h3 id="五-http-verbs">五、HTTP verbs</h3>
+
+<p>七个HTTP方法：GET / POST / PUT / DELETE / PATCH / HEAD/ OPTIONS，只记录常用的4个。</p>
+
+<h5 id="1-get">1）GET</h5>
+
+<p>向指定资源请求数据，一般用来获取，查询资源信息，安全，幂等。</p>
+
+<ul>
+<li><p>200（OK） - 表示已在响应中发出</p></li>
+
+<li><p>204（无内容） - 资源有空表示</p></li>
+
+<li><p>301（Moved Permanently） - 资源的URI已被更新</p></li>
+
+<li><p>303（See Other） - 其他（如，负载均衡）</p></li>
+
+<li><p>304（not modified）- 资源未更改（缓存）</p></li>
+
+<li><p>400 （bad request）- 指代坏请求（如，参数错误）</p></li>
+
+<li><p>404 （not found）- 资源不存在</p></li>
+
+<li><p>406 （not acceptable）- 服务端不支持所需表示</p></li>
+
+<li><p>500 （internal server error）- 通用错误响应</p></li>
+
+<li><p>503 （Service Unavailable）- 服务端当前无法处理请求</p></li>
+</ul>
+
+<h5 id="2-post">2）POST</h5>
+
+<ul>
+<li><p>向指定资源提交数据进行请求处理，一般用来更新资源信息</p></li>
+
+<li><p>不幂等（POST请求服务器执行一个动作，多次请求会多次执行）</p></li>
+
+<li><p>请求显示在请求体里面，不会被缓存，对请求长度无限制。</p></li>
+
+<li><p>200（OK） - 如果现有资源已被更改</p></li>
+
+<li><p>201（created） - 如果新资源被创建</p></li>
+
+<li><p>202（accepted） - 已接受处理请求但尚未完成（异步处理）</p></li>
+
+<li><p>301（Moved Permanently） - 资源的 URI 被更新</p></li>
+
+<li><p>303（See Other） - 其他（如， 负载均衡）</p></li>
+
+<li><p>400（bad request） - 指代坏请求</p></li>
+
+<li><p>404 （not found） - 资源不存在</p></li>
+
+<li><p>406 （not acceptable） - 服务端不支持所需表示</p></li>
+
+<li><p>409 （conflict） - 通用冲突</p></li>
+
+<li><p>412 （Precondition Failed） - 前置条件失败（如执行条件更新时的冲突）</p></li>
+
+<li><p>415 （unsupported media type） - 接受到的表示不受支持</p></li>
+
+<li><p>500 （internal server error） - 通用错误响应</p></li>
+
+<li><p>503 （Service Unavailable） - 服务当前无法处理请求</p></li>
+</ul>
+
+<h5 id="3-put">3）PUT</h5>
+
+<p>通过替换的方式更新资源，不安全，幂等。</p>
+
+<ul>
+<li>200 （OK） - 如果已存在资源被更改</li>
+<li>201 （created） - 如果新资源被创建</li>
+<li>301（Moved Permanently） - 资源的 URI 已更改</li>
+<li>303 （See Other） - 其他（如， 负载均衡）</li>
+<li>400 （bad request） - 指代坏请求</li>
+<li>404 （not found） - 资源不存在</li>
+<li>406 （not acceptable） - 服务端不支持所需表示</li>
+<li>409 （conflict） - 通用冲突</li>
+<li>412 （Precondition Failed） - 前置条件失败（如执行条件更新时的冲突）</li>
+<li>415 （unsupported media type） - 接受到的表示不受支持</li>
+<li>500 （internal server error） - 通用错误响应</li>
+<li>503 （Service Unavailable） - 服务当前无法处理请求</li>
+</ul>
+
+<h5 id="4-delete">4）DELETE</h5>
+
+<p>不安全、幂等，删除。</p>
+
+<ul>
+<li>200 （OK） - 资源已被删除</li>
+<li>301 （Moved Permanently） - 资源的 URI 已更改</li>
+<li>303 （See Other） - 其他， 如负载均衡</li>
+<li>400 （bad request） - 指代坏请求</li>
+<li>404 （not found） - 资源不存在</li>
+<li>409 （conflict） - 通用冲突</li>
+<li>500 （internal server error） - 通用错误响应</li>
+<li>503 （Service Unavailable） - 服务端当前无法处理请求</li>
+</ul>
+
+<h5 id="5-patch">5）PATCH</h5>
+
+<p>不幂等，理论上讲PUT所做的更新是对整个对象来说的，一般都是将整个对象传输到后台进行整体修改，如果我只有一个字段想要改变，也要这么做，有点浪费带宽，所以出现了PATCH：<strong>局部更新</strong>。</p>
+
+<p>例如: Github的API则支持使用PATCH方法来进行issue的更新</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">PATCH /repos/:owner/:repo/issues/:number</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>什么是幂等？</p>
+
+<p>Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N &gt; 0 identical requests is the same as for a single request.
+——HTTP/1.1规范中幂等性的定义</p>
+
+<p>​ 从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。简单来说就是，同一个请求，发送一次和发送N次效果是一样的！幂等性是分布式系统设计中十分重要的概念</p>
+</blockquote>
+
+<h3 id="六-总结">六、总结</h3>
+
+<p>1）面向资源，可以唯一标识和定位资源，每一个URI代表一种资源</p>
+
+<p>2）将HTTP作为了一种传输协议，最直观的是使用了HTTP规范，使用标准的HTTP方法来操作资源，GET/PUT/DELETE/POST，实现&rdquo;表现层状态转移&rdquo;。</p>
+
+<p>3）无状态连接，服务器端不应保存过多上下文状态，每个请求应该都是独立的。</p>
+
+<p>4）通过XML，JSON进行数据传递（服务器返回的数据格式，应该尽量使用JSON，避免使用XML。）</p>
+
+<p>5）RESTful 架构的好处：</p>
+
+<p>​       a. 互联网环境下，任何应用的架构和API容易被理解</p>
+
+<p>​   b. 分布式环境下，任何请求都可以被发送到任意服务器</p>
+
+<p>​   c. 异构环境下， 任何环境的访问和使用方式都统一</p>
+
+<hr>
+
+<h3 id="七-参考">七、参考</h3>
+
+<p>RESTful 架构详解：<a href="https://www.runoob.com/w3cnote/restful-architecture.html">https://www.runoob.com/w3cnote/restful-architecture.html</a></p>
+
+<p>RESTful 架构（阮）：<a href="http://www.ruanyifeng.com/blog/2011/09/restful.html">http://www.ruanyifeng.com/blog/2011/09/restful.html</a></p>
+
+<p><a href="https://www.jianshu.com/p/e77d2f60aa5d">https://www.jianshu.com/p/e77d2f60aa5d</a></p>
+
+<h3 id="八-demo">八、Demo</h3>
+
+<p>新增一个简单的符合RESTful风格的SpringBoot Demo ，详见<a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">icejam</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/extract-zookeeperaddr-from-registeraddr/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Extract ZookeeperAddr From RegisterAddr</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/leetcode/">
+            <span class="next-text nav-default">LeetCode</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:icejammm@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/orrrz" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://orrrz.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">icejam</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

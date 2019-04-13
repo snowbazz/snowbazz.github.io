@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>SpringMVC异常处理 - icejam&#39;blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="icejam" /><meta name="description" content="写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。 在这里我只写常用的两种： 1）实现HandlerExceptionResolver接口 2" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.dc423cf9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="SpringMVC异常处理" />
+<meta property="og:description" content="写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。 在这里我只写常用的两种： 1）实现HandlerExceptionResolver接口 2" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" />
+<meta property="article:published_time" content="2019-04-05T02:18:18&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-05T02:18:18&#43;08:00"/>
+
+<meta itemprop="name" content="SpringMVC异常处理">
+<meta itemprop="description" content="写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。 在这里我只写常用的两种： 1）实现HandlerExceptionResolver接口 2">
+
+
+<meta itemprop="datePublished" content="2019-04-05T02:18:18&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-05T02:18:18&#43;08:00" />
+<meta itemprop="wordCount" content="969">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringMVC异常处理"/>
+<meta name="twitter:description" content="写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。 在这里我只写常用的两种： 1）实现HandlerExceptionResolver接口 2"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Icejam&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Icejam&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">SpringMVC异常处理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-05 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#实现-handlerexceptionresolver-接口">实现<code>HandlerExceptionResolver</code>接口</a></li>
+<li><a href="#使用-controlleradvice-exceptionhandler-注解">使用<code>@ControllerAdvice</code> + <code>@ExceptionHandler</code> 注解</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>写完 <a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a> 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。</p>
+
+<p>在这里我只写常用的两种：</p>
+
+<p>1）实现<code>HandlerExceptionResolver</code>接口</p>
+
+<p>2）使用<code>@ControllerAdvice</code> + <code>@ExceptionHandler</code> 注解</p>
+
+<h2 id="实现-handlerexceptionresolver-接口">实现<code>HandlerExceptionResolver</code>接口</h2>
+
+<p>Spring MVC 提供了异常解析器 <code>HandlerExceptionResolver</code> 接口，将处理器( handler )执行时发生的异常，解析( 转换 )成对应的 <code>ModelAndView</code> 结果。源码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// HandlerExceptionResolver.java
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">HandlerExceptionResolver</span> <span class="o">{</span>
+    
+    <span class="c1">// 解析异常，转换成对应的 ModelAndView 结果
+</span><span class="c1"></span>    <span class="nd">@Nullable</span>
+    <span class="n">ModelAndView</span> <span class="nf">resolveException</span><span class="o">(</span>
+            <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">handler</span><span class="o">,</span> <span class="n">Exception</span> <span class="n">ex</span><span class="o">);</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>SpringMVC 处理请求出现异常时，会找到容器中<code>HandlerExceptionResolver</code>类型的对象，即实现 <code>HandlerExceptionResolver</code> 的类。换句话说，<code>HandlerExceptionResolver</code>可以实现全局的异常控制，所有的 controller 发生的异常都会进入其实现类，需要做通用处理。</p>
+
+<p>自定义异常处理类，实现接口 <code>HandlerExceptionResolver</code>，需要确保此类被扫描并装在到 Spring 容器，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomerExceptionResolver</span> <span class="kd">implements</span> <span class="n">HandlerExceptionResolver</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">ModelAndView</span> <span class="nf">resolveException</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="n">Object</span> <span class="n">handler</span><span class="o">,</span> <span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//1. 打印异常信息
+</span><span class="c1"></span>        <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+        <span class="c1">//2. 保存错误信息、跳转到错误页面！
+</span><span class="c1"></span>        <span class="n">ModelAndView</span> <span class="n">modelAndView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModelAndView</span><span class="o">();</span>
+        <span class="c1">// 保存错误信息
+</span><span class="c1"></span>        <span class="n">modelAndView</span><span class="o">.</span><span class="na">addObject</span><span class="o">(</span><span class="s">&#34;error&#34;</span><span class="o">,</span> <span class="s">&#34;系统繁忙&#34;</span><span class="o">+</span><span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="c1">// 设置错误页面
+</span><span class="c1"></span>        <span class="n">modelAndView</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">&#34;error&#34;</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">modelAndView</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><p>访问控制器方法，可以捕获后台的所有异常，如果发现异常就会经过上面自定义的<code>CustomerExceptionResolver</code>类，并返回<code>modelAndView</code>。</p></li>
+
+<li><p>可以创建多个自定义异常处理类，但是只会走一个，哪一个先加入到容器就先执行，其他的自定义异常处理类无效。</p></li>
+</ul>
+
+<h2 id="使用-controlleradvice-exceptionhandler-注解">使用<code>@ControllerAdvice</code> + <code>@ExceptionHandler</code> 注解</h2>
+
+<p><code>@ControllerAdvice</code> 注解标注当前 bean 是对 Controller 进行增强，具体增强什么，需要配合<code>@ExceptionHandler</code> 实现对异常的精确处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">/**
+ * Created by icejam.
+ * 全局异常处理类
+ */
+@ControllerAdvice
+public class BaseExceptionHandler {
+
+    // 自定义异常
+    @ExceptionHandler(SystemException.class)
+    @ResponseBody
+    public Result customHandler(SystemException e) {
+        return new Result(false, StatusCode.ERROR, &#34;系统异常&#34;);
+    }
+
+    // 其他未处理的异常，即通用处理
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public Result error(Exception e) {
+        return new Result(false, StatusCode.ERROR, e.getMessage());
+    }
+    
+    // 如果 @ExceptionHandler 注解中未声明要处理的异常类型，则默认为参数列表中的异常类型，参数对象是controller层抛出的异常对象。
+    @ExceptionHandler()
+    @ResponseBody
+    String handleException(Exception e){
+        return e.getMessage();
+    }
+}</pre></td></tr></table>
+</div>
+</div>
+<p>这种方式更加灵活，推荐使用</p>
+
+<p>具体案例可以参考我的<a href="https://github.com/orrrz/springboot_crud_restful">springboot_crud_restful</a> Demo，里面对于全局异常的捕获与处理就是通过这个方式。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">icejam</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-04-05
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/extract-zookeeperaddr-from-registeraddr/">
+            <span class="next-text nav-default">Extract ZookeeperAddr From RegisterAddr</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:icejammm@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/orrrz" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://orrrz.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">icejam</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
