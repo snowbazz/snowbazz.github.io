@@ -3,11 +3,9 @@
 
 
 
-```markdown
 {{% admonition tip tip %}}
 tip shortcodes
 {{% /admonition %}}
-```
 
 ```markdown
 {{% admonition success success %}}
