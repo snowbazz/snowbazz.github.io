@@ -1,5 +1,5 @@
 
-### 一、概述：
+## 一、概述：
 
 
 
@@ -9,9 +9,9 @@ REST：Representational State Transfer  表现层状态转移，是一种架构�
 
 > REST本身并没有创造新的技术、组件或服务，而隐藏在RESTful背后的理念就是使用Web的现有特征和能力， 更好地使用现有Web标准中的一些准则和约束。虽然REST本身受Web技术的影响很深， 但是理论上REST架构风格并不是绑定在HTTP上，只不过目前HTTP是唯一与REST相关的实例。 所以我们这里描述的REST也是通过HTTP实现的REST。
 
+<br/>
 
-
-### 二、起源
+## 二、起源
 
 
 
@@ -19,13 +19,17 @@ REST这个词，是[Roy Thomas Fielding](http://en.wikipedia.org/wiki/Roy_Fieldi
 
 RESTful架构的本意是在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。（My work is motivated by the desire to understand and evaluate the architectural design of network-based application software through principled use of architectural constraints, thereby obtaining the functional, performance, and social properties desired of an architecture. ）
 
+<br/>
+
+## 三、Richardson Maturity Model（理查德森模型）
 
 
-### 三、Richardson Maturity Model（理查德森模型）
+
+> 理查德森模型原地址：http://martinfowler.com/articles/richardsonMaturityModel.html
 
 
 
-http://martinfowler.com/articles/richardsonMaturityModel.html
+
 
 ![img](https://upload-images.jianshu.io/upload_images/7143349-e62020a3891b8428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/673/format/webp)
 
@@ -76,17 +80,17 @@ Hypermedia API的设计被称为[HATEOAS](http://en.wikipedia.org/wiki/HATEOAS)(
 
 上面代码表示，服务器给出了提示信息，以及文档的网址。
 
+<br/>
 
-
-### 四、理解REST
+## 四、理解REST
 
 以下通过对REST（Representational State Transfer）每个单词的解析，了解什么是REST。
 
-##### 1、资源（Resources）
+### 1、资源（Resources）
 
 REST省略了主语，即资源表现层状态转移。
 
-所谓的"资源"，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，**URI是每一个资源的地址或独一无二的标识。**
+所谓的"资源"，就是网络上的一个实体，或是一个具体信息，可以用URI指向它，URI是每一个资源的地址或独一无二的标识。
 
 所谓"上网"，就是与互联网上一系列的"资源"互动，调用资源的URI。
 
@@ -94,27 +98,40 @@ REST省略了主语，即资源表现层状态转移。
 
 
 
-##### 2、表现层（Representation）
+### 2、表现层（Representation）
 
-"资源"是一种信息实体，它可以有多种外在表现形式。**我们把"资源"具体呈现出来的形式，叫做它的"表现层"（Representation）。**
+"资源"是一种信息实体，它可以有多种外在表现形式。我们把"资源"具体呈现出来的形式，叫做它的"表现层"（Representation）。
 
 比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对"表现层"的描述。
 
 
 
-##### 3、状态转移（State Transfer）
+### 3、状态转移（State Transfer）
 
 互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，**如果客户端想要操作服务器，必须通过某种手段，让服务器端发生"状态转化"（State Transfer）。而这种转化是建立在表现层之上的，所以就是"表现层状态转化"。**
 
-客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE、PATCH。
+客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的HTTP动词：GET、POST、PUT、DELETE。
 
+<br/>
 
+## 五、HTTP verbs
 
-### 五、HTTP verbs
+常用的HTTP方法：GET / POST / PUT / DELETE / PATCH / HEAD，
 
-七个HTTP方法：GET / POST / PUT / DELETE / PATCH / HEAD/ OPTIONS，只记录常用的4个。 
+> w3c对HTTP请求的说明：<https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>
 
-##### 1）GET
+<br/>
+
+> 什么是幂等？
+>
+> Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N > 0 identical requests is the same as for a single request.
+> ——HTTP/1.1规范中幂等性的定义
+>
+> ​	从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。简单来说就是，同一个请求，发送一次和发送N次效果是一样的！幂等性是分布式系统设计中十分重要的概念
+
+<br/>
+
+### 1）GET
 
 向指定资源请求数据，一般用来获取，查询资源信息，安全，幂等。
 
@@ -130,7 +147,7 @@ REST省略了主语，即资源表现层状态转移。
 - 500 （internal server error）- 通用错误响应
 - 503 （Service Unavailable）- 服务端当前无法处理请求
 
-##### 2）POST
+### 2）POST
 
 - 向指定资源提交数据进行请求处理，一般用来更新资源信息
 
@@ -150,7 +167,7 @@ REST省略了主语，即资源表现层状态转移。
 - 500 （internal server error） - 通用错误响应
 - 503 （Service Unavailable） - 服务当前无法处理请求 
 
-##### 3）PUT
+### 3）PUT
 
 通过替换的方式更新资源，不安全，幂等。
 
@@ -167,7 +184,7 @@ REST省略了主语，即资源表现层状态转移。
 - 500 （internal server error） - 通用错误响应
 - 503 （Service Unavailable） - 服务当前无法处理请求 
 
-##### 4）DELETE
+### 4）DELETE
 
 不安全、幂等，删除。
 
@@ -180,11 +197,9 @@ REST省略了主语，即资源表现层状态转移。
 - 500 （internal server error） - 通用错误响应
 - 503 （Service Unavailable） - 服务端当前无法处理请求 
 
-##### 5）PATCH
+### 5）PATCH
 
 不幂等，理论上讲PUT所做的更新是对整个对象来说的，一般都是将整个对象传输到后台进行整体修改，如果我只有一个字段想要改变，也要这么做，有点浪费带宽，所以出现了PATCH：**局部更新**。 
-
-
 
 例如: Github的API则支持使用PATCH方法来进行issue的更新
 
@@ -192,18 +207,19 @@ REST省略了主语，即资源表现层状态转移。
 PATCH /repos/:owner/:repo/issues/:number
 ```
 
+### 5）HEAD
 
+与GET请求类似，但是HEAD只请求页面的首部，并不返回消息体。作用：
 
-> 什么是幂等？
->
-> Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N > 0 identical requests is the same as for a single request.
-> ——HTTP/1.1规范中幂等性的定义
->
-> ​	从定义上看，HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。简单来说就是，同一个请求，发送一次和发送N次效果是一样的！幂等性是分布式系统设计中十分重要的概念
+1. 检查超链接的有效性；
 
+2. 检查网页是否被修改；
 
+3. 多用于自动搜索机器人获取网页的标志信息，获取rss种子信息，或者传递安全认证信息等
 
-### 六、总结
+<br/>
+
+## 六、总结
 
 
 
@@ -225,10 +241,9 @@ PATCH /repos/:owner/:repo/issues/:number
 
 
 
-<hr>
+<br/>
 
-
-### 七、参考
+## 七、参考
 
 
 
@@ -240,7 +255,9 @@ RESTful 架构（阮）：<http://www.ruanyifeng.com/blog/2011/09/restful.html>
 
 
 
-### 八、Demo
+<br/>
+
+## 八、Demo
 
 新增一个简单的符合RESTful风格的SpringBoot Demo ，详见[springboot_crud_restful](<https://github.com/orrrz/springboot_crud_restful>)
 

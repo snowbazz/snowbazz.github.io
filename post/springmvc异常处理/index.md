@@ -7,13 +7,15 @@
 
 在这里我只写常用的两种：
 
-1）实现`HandlerExceptionResolver`接口
+1）实现 HandlerExceptionResolver 接口
 
-2）使用`@ControllerAdvice` + `@ExceptionHandler` 注解
+2）使用@ControllerAdvice + @ExceptionHandler 注解
 
-## 实现`HandlerExceptionResolver`接口
+<br/>
 
-Spring MVC 提供了异常解析器 `HandlerExceptionResolver` 接口，将处理器( handler )执行时发生的异常，解析( 转换 )成对应的 `ModelAndView` 结果。源码如下：
+## 1. 实现 HandlerExceptionResolver 接口
+
+Spring MVC 提供了异常解析器 HandlerExceptionResolver 接口，将处理器( handler )执行时发生的异常，解析( 转换 )成对应的 ModelAndView 结果。源码如下：
 
 ```java
 // HandlerExceptionResolver.java
@@ -28,9 +30,9 @@ public interface HandlerExceptionResolver {
 
 
 
-SpringMVC 处理请求出现异常时，会找到容器中`HandlerExceptionResolver`类型的对象，即实现 `HandlerExceptionResolver` 的类。换句话说，`HandlerExceptionResolver`可以实现全局的异常控制，所有的 controller 发生的异常都会进入其实现类，需要做通用处理。
+SpringMVC 处理请求出现异常时，会找到容器中 HandlerExceptionResolver 类型的对象，即实现 HandlerExceptionResolver 的类。换句话说，HandlerExceptionResolver 可以实现全局的异常控制，所有的 controller 发生的异常都会进入其实现类，需要做通用处理。
 
-自定义异常处理类，实现接口 `HandlerExceptionResolver`，需要确保此类被扫描并装在到 Spring 容器，代码如下：
+自定义异常处理类，实现接口 HandlerExceptionResolver，需要确保此类被扫描并装在到 Spring 容器，代码如下：
 
 ```java
 @Component
@@ -54,13 +56,16 @@ public class CustomerExceptionResolver implements HandlerExceptionResolver {
 
 
 
-- 访问控制器方法，可以捕获后台的所有异常，如果发现异常就会经过上面自定义的`CustomerExceptionResolver`类，并返回`modelAndView`。
-
+- 访问控制器方法，可以捕获后台的所有异常，如果发现异常就会经过上面自定义的CustomerExceptionResolver类，并返回modelAndView。
 - 可以创建多个自定义异常处理类，但是只会走一个，哪一个先加入到容器就先执行，其他的自定义异常处理类无效。
 
-## 使用`@ControllerAdvice` + `@ExceptionHandler` 注解
 
-`@ControllerAdvice` 注解标注当前 bean 是对 Controller 进行增强，具体增强什么，需要配合`@ExceptionHandler` 实现对异常的精确处理。
+
+<br/>
+
+## 2. 使用@ControllerAdvice + @ExceptionHandler 注解
+
+@ControllerAdvice 注解标注当前 bean 是对 Controller 进行增强，具体增强什么，需要配合@ExceptionHandler 实现对异常的精确处理。
 
 ```
 /**
@@ -93,8 +98,12 @@ public class BaseExceptionHandler {
 }
 ```
 
+<br/>
 
+{{% admonition tip tip %}}
 
-这种方式更加灵活，推荐使用
+第二种种方式更加灵活，推荐使用
 
 具体案例可以参考我的[springboot_crud_restful](<https://github.com/orrrz/springboot_crud_restful>) Demo，里面对于全局异常的捕获与处理就是通过这个方式。
+
+{{% /admonition %}}
