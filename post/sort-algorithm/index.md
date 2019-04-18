@@ -345,10 +345,6 @@ private static int getIndex(int[] arr, int low, int high) {
 
 
 
-{{% admonition tip tip %}}
-全部代码在这	：<https://github.com/orrrz/blog-code/tree/master/Sort>
-{{% /admonition %}}	
-
 
 
 ## 参考资料
@@ -356,3 +352,5 @@ private static int getIndex(int[] arr, int low, int high) {
 [图解排序算法(二)之希尔排序](https://www.cnblogs.com/chengxiao/p/6104371.html)
 
 [快速排序](<https://blog.csdn.net/nrsc272420199/article/details/82587933>)
+
+全部代码在这	：<https://github.com/orrrz/blog-code/tree/master/Sort>
