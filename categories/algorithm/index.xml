@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on icejam&#39;blog</title>
+    <link>http://orrrz.github.io/categories/algorithm/</link>
+    <description>Recent content in algorithm on icejam&#39;blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 18 Apr 2019 22:57:44 +0800</lastBuildDate>
+    
+	<atom:link href="http://orrrz.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sort Algorithm</title>
+      <link>http://orrrz.github.io/post/sort-algorithm/</link>
+      <pubDate>Thu, 18 Apr 2019 22:57:44 +0800</pubDate>
+      
+      <guid>http://orrrz.github.io/post/sort-algorithm/</guid>
+      <description>算法比较 算法名称 复杂度 实现关键 冒泡排序 O(n^2) （无序区，有序区）。从无序区通过交换找出最大元素放到有序区前端。 选择排序 O(n^2) （有序区，无序区）。在无序</description>
+    </item>
+    
+  </channel>
+</rss>

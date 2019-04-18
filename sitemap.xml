@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://orrrz.github.io/post/sort-algorithm/</loc>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://orrrz.github.io/post/test/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -59,7 +66,7 @@
   
   <url>
     <loc>http://orrrz.github.io/post/</loc>
-    <lastmod>2019-04-14T04:14:28+08:00</lastmod>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -71,8 +78,22 @@
   </url>
   
   <url>
+    <loc>http://orrrz.github.io/tags/algorithm/</loc>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://orrrz.github.io/categories/algorithm/</loc>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://orrrz.github.io/</loc>
-    <lastmod>2019-04-14T04:14:28+08:00</lastmod>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
