@@ -343,9 +343,7 @@ private static int getIndex(int[] arr, int low, int high) {
 }
 ```
 
-
-
-
+<br>
 
 ## 参考资料
 
