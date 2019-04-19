@@ -4,7 +4,7 @@
 - Be better to family
 - Less empty talk
 - Dedicated to study
-- No more stare at screen in the dark
+- No screens after bedtime
 - Be a man like mosquito, full of aggressiveness and perseverance!
 
 
