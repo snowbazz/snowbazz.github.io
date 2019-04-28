@@ -259,5 +259,5 @@ RESTful 架构（阮）：<http://www.ruanyifeng.com/blog/2011/09/restful.html>
 
 ## 八、Demo
 
-新增一个简单的符合RESTful风格的SpringBoot Demo ，详见[springboot_crud_restful](<https://github.com/orrrz/springboot_crud_restful>)
+新增一个简单的符合RESTful风格的SpringBoot Demo ，详见[springboot_crud_restful](<https://github.com/snowbazz/springboot_crud_restful>)
 

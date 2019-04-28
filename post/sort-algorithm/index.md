@@ -351,4 +351,4 @@ private static int getIndex(int[] arr, int low, int high) {
 
 [快速排序](<https://blog.csdn.net/nrsc272420199/article/details/82587933>)
 
-全部代码在这	：<https://github.com/orrrz/blog-code/tree/master/Sort>
+全部代码在这	：<https://github.com/snowbazz/blog-code/tree/master/Sort>

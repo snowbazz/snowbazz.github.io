@@ -1,126 +1,126 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="http://orrrz.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://snowbazz.github.io/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://orrrz.github.io/post/sort-algorithm/</loc>
+    <loc>http://snowbazz.github.io/post/sort-algorithm/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/test/</loc>
+    <loc>http://snowbazz.github.io/post/test/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
+    <loc>http://snowbazz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/extract-zookeeperaddr-from-registeraddr/</loc>
+    <loc>http://snowbazz.github.io/post/extract-zookeeperaddr-from-registeraddr/</loc>
     <lastmod>2019-03-30T21:32:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/restful-api/</loc>
+    <loc>http://snowbazz.github.io/post/restful-api/</loc>
     <lastmod>2019-03-27T19:55:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/leetcode/</loc>
+    <loc>http://snowbazz.github.io/post/leetcode/</loc>
     <lastmod>2019-03-20T22:27:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/git-memo/</loc>
+    <loc>http://snowbazz.github.io/post/git-memo/</loc>
     <lastmod>2019-03-20T10:48:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/general-resolves/</loc>
+    <loc>http://snowbazz.github.io/post/general-resolves/</loc>
     <lastmod>2019-03-07T11:38:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/categories/</loc>
+    <loc>http://snowbazz.github.io/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/post/</loc>
+    <loc>http://snowbazz.github.io/post/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/tags/</loc>
+    <loc>http://snowbazz.github.io/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/tags/algorithm/</loc>
+    <loc>http://snowbazz.github.io/tags/algorithm/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/categories/algorithm/</loc>
+    <loc>http://snowbazz.github.io/categories/algorithm/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/</loc>
+    <loc>http://snowbazz.github.io/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/tags/spring/</loc>
+    <loc>http://snowbazz.github.io/tags/spring/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/categories/spring/</loc>
+    <loc>http://snowbazz.github.io/categories/spring/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/tags/spring-mvc/</loc>
+    <loc>http://snowbazz.github.io/tags/spring-mvc/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://orrrz.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
+    <loc>http://snowbazz.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

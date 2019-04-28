@@ -18,7 +18,7 @@ hugo server -t=we -D
 hugo -t=hyde -D    
 ```
 
-部署到orrrz.github.io
+部署到snowbazz.github.io
 
 ```git
 cd public

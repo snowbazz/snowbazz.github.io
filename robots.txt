@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://orrrz.github.io/sitemap.xml
+Sitemap: http://snowbazz.github.io/sitemap.xml

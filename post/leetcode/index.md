@@ -3,5 +3,5 @@
 
 
 
-迁移至[Leetcode-algorithm-solution](https://github.com/orrrz/Leetcode-algorithm-solution)
+迁移至[Leetcode-algorithm-solution](https://github.com/snowbazz/Leetcode-algorithm-solution)
 

@@ -3,7 +3,7 @@
 
 
 
-写完 [springboot_crud_restful](<https://github.com/orrrz/springboot_crud_restful>) 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。
+写完 [springboot_crud_restful](<https://github.com/snowbazz/springboot_crud_restful>) 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。
 
 在这里我只写常用的两种：
 
@@ -104,6 +104,6 @@ public class BaseExceptionHandler {
 
 第二种种方式更加灵活，推荐使用
 
-具体案例可以参考我的[springboot_crud_restful](<https://github.com/orrrz/springboot_crud_restful>) Demo，里面对于全局异常的捕获与处理就是通过这个方式。
+具体案例可以参考我的[springboot_crud_restful](<https://github.com/snowbazz/springboot_crud_restful>) Demo，里面对于全局异常的捕获与处理就是通过这个方式。
 
 {{% /admonition %}}

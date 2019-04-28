@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>spring on icejam&#39;blog</title>
-    <link>http://orrrz.github.io/categories/spring/</link>
+    <link>http://snowbazz.github.io/categories/spring/</link>
     <description>Recent content in spring on icejam&#39;blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 05 Apr 2019 02:18:18 +0800</lastBuildDate>
     
-	<atom:link href="http://orrrz.github.io/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://snowbazz.github.io/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringMVC异常处理</title>
-      <link>http://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <link>http://snowbazz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
       <pubDate>Fri, 05 Apr 2019 02:18:18 +0800</pubDate>
       
-      <guid>http://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <guid>http://snowbazz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
       <description>写完 springboot_crud_restful 这个 demo 后，进一步了解到 SpringMVC 对于统一异常处理的方法。 在这里我只写常用的两种： 1）实现 HandlerExceptionResolver 接口 2）使用@ControllerAdvice + @ExceptionHandler 注</description>
     </item>
     
