@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JWT入门 - SnowBazz&#39;blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="snowbazz" /><meta name="description" content="学习JWT时的一篇笔记，内容没整理，比较杂乱。 基于Session的服务认证 基于Session的服务认证的流程 ​ 1、用户向服务器发送用户名和密" /><meta name="keywords" content="jwt" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://snowbazz.github.io/post/jwt%E5%85%A5%E9%97%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.dc423cf9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JWT入门" />
+<meta property="og:description" content="学习JWT时的一篇笔记，内容没整理，比较杂乱。 基于Session的服务认证 基于Session的服务认证的流程 ​ 1、用户向服务器发送用户名和密" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://snowbazz.github.io/post/jwt%E5%85%A5%E9%97%A8/" />
+<meta property="article:published_time" content="2019-04-29T02:39:04&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-29T02:39:04&#43;08:00"/>
+
+<meta itemprop="name" content="JWT入门">
+<meta itemprop="description" content="学习JWT时的一篇笔记，内容没整理，比较杂乱。 基于Session的服务认证 基于Session的服务认证的流程 ​ 1、用户向服务器发送用户名和密">
+
+
+<meta itemprop="datePublished" content="2019-04-29T02:39:04&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-29T02:39:04&#43;08:00" />
+<meta itemprop="wordCount" content="1793">
+
+
+
+<meta itemprop="keywords" content="jwt," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JWT入门"/>
+<meta name="twitter:description" content="学习JWT时的一篇笔记，内容没整理，比较杂乱。 基于Session的服务认证 基于Session的服务认证的流程 ​ 1、用户向服务器发送用户名和密"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">SnowBazz&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">SnowBazz&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JWT入门</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-29 </span>
+        <div class="post-category">
+            <a href="/categories/jwt/"> jwt </a>
+            </div>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#基于session的服务认证">基于Session的服务认证</a></li>
+<li><a href="#jwt-s-data-structure">JWT&rsquo;s Data Structure</a></li>
+<li><a href="#how-do-json-web-tokens-work">How do JSON Web Tokens work?</a></li>
+<li><a href="#jwt-的使用方式">JWT 的使用方式</a></li>
+<li><a href="#jwt-的几个特点">JWT 的几个特点</a></li>
+<li><a href="#when-should-you-use-json-web-tokens">When should you use JSON Web Tokens?</a></li>
+<li><a href="#demo">Demo</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div class="admonition tip">
+  <p>学习JWT时的一篇笔记，内容没整理，比较杂乱。</p>
+
+</div>
+
+<p><br></p>
+
+<h2 id="基于session的服务认证">基于Session的服务认证</h2>
+
+<p>基于Session的服务认证的流程</p>
+
+<p>​   1、用户向服务器发送用户名和密码。</p>
+
+<p>​   2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。</p>
+
+<p>​   3、服务器向用户返回一个 session_id，写入用户的 Cookie。</p>
+
+<p>​   4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。</p>
+
+<p>​   5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。</p>
+
+<p>基于Session的服务认证的弊端</p>
+
+<p>​   拓展性（scaling）差，如果服务器集群，或者跨域的服务导向架构，要求session数据共享，每台服务器都能够读取session</p>
+
+<p>解决方法：</p>
+
+<p>​   session数据持久化，各种服务收到请求后，都向持久层请求数据，工程量大，如果持久层挂了，单点失败</p>
+
+<p>​   CAS实现SSO</p>
+
+<p>​</p>
+
+<p><br></p>
+
+<h2 id="jwt-s-data-structure">JWT&rsquo;s Data Structure</h2>
+
+<p>In its compact form, JSON Web Tokens consist of three parts separated by dots (<code>.</code>),</p>
+
+<p>which are:</p>
+
+<ul>
+<li>Header</li>
+</ul>
+
+<blockquote>
+<p>The header <em>typically</em> consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.</p>
+</blockquote>
+
+<ul>
+<li><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">{</span>
+  <span class="s">&#34;alg&#34;</span><span class="o">:</span> <span class="s">&#34;HS256&#34;</span><span class="o">,</span>
+  <span class="s">&#34;typ&#34;</span><span class="o">:</span> <span class="s">&#34;JWT&#34;</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Payload</p>
+
+<ul>
+<li><code>java
+{
+&quot;sub&quot;: &quot;1234567890&quot;,
+&quot;name&quot;: &quot;John Doe&quot;,
+&quot;admin&quot;: true
+}
+</code></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>The second part of the token is the payload, which contains the claims. Claims are statements about an entity (typically, the user) and additional data. There are three types of claims: <em>registered</em>, <em>public</em>, and <em>private</em> claims.</p>
+
+<p>Do note that for signed tokens this information, though protected against tampering, is readable by anyone. Do not put secret information in the payload or header elements of a JWT unless it is encrypted.</p>
+
+<p>注意：尽管具备Header和Payload元素的signed tokens 能够防止篡改，但任何人都可以读取。除非加密，否则不要把信息放在patload和header元素中</p>
+</blockquote>
+
+<ul>
+<li>Signature</li>
+</ul>
+
+<blockquote>
+<p>To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.</p>
+
+<p>要创建Signature，必须采用上述已经编码的header，payload，一个secret( 秘钥 )和header中指定的加密算法，并对上述进行签名</p>
+</blockquote>
+
+<ul>
+<li><code>java
+HMACSHA256(
+base64UrlEncode(header) + &quot;.&quot; +
+base64UrlEncode(payload),
+secret)
+</code></li>
+</ul>
+
+<p>一个完整的JWT结构如下：</p>
+
+<p><img src="https://cdn.auth0.com/content/jwt/encoded-jwt3.png" alt="Encoded JWT" /></p>
+
+<p><br></p>
+
+<h2 id="how-do-json-web-tokens-work">How do JSON Web Tokens work?</h2>
+
+<p>In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. Since tokens are credentials, great care must be taken to prevent security issues. In general, you should not keep tokens longer than required.</p>
+
+<p>Whenever the user wants to access a protected route or resource, the user agent should send the JWT, typically in the <strong>Authorization</strong> header using the <strong>Bearer</strong> schema. The content of the header should look like the following:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Authorization: Bearer &lt;token&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>This can be, in certain cases, a <font color='red'>stateless authorization mechanism</font>. The server&rsquo;s protected routes will check for a valid JWT in the <code>Authorization</code> header, and if it&rsquo;s present, the user will be allowed to access protected resources. If the JWT contains the necessary data, the need to query the database for certain operations may be reduced, though this may not always be the case.(服务器就不保存任何 session 数据，服务器变成无状态了，从而比较容易实现扩展。)</p>
+
+<p><font color='red'>If the token is sent in the <code>Authorization</code> header, Cross-Origin Resource Sharing (CORS) won&rsquo;t be an issue as it doesn&rsquo;t use cookies.</font>(as 翻译成由于)</p>
+
+<p>The following diagram shows how a JWT is obtained and used to access APIs or resources:</p>
+
+<p><img src="https://cdn2.auth0.com/docs/media/articles/api-auth/client-credentials-grant.png" alt="How does a JSON Web Token work" /></p>
+
+<ol>
+<li>The application or client requests authorization to the authorization server. This is performed through one of the different authorization flows. For example, a typical <a href="http://openid.net/connect/">OpenID Connect</a> compliant web application will go through the <code>/oauth/authorize</code> endpoint using the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">authorization code flow</a>.</li>
+<li>When the authorization is granted, the authorization server returns an access token to the application.</li>
+<li>The application uses the access token to access a protected resource (like an API).</li>
+</ol>
+
+<p>Do note that with signed tokens, all the information contained within the token is exposed to users or other parties, even though they are unable to change it. This means you should not put secret information within the token.</p>
+
+<p><br></p>
+
+<h2 id="jwt-的使用方式">JWT 的使用方式</h2>
+
+<p>客户端收到服务器返回的 JWT，可以储存在 Cookie 里面，也可以储存在 localStorage。</p>
+
+<p>此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 Cookie 里面自动发送，但是这样不能跨域，所以更好的做法是放在 HTTP 请求的头信息<code>Authorization</code>字段里面。</p>
+
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">Authorization</span><span class="o">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">token</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<p>另一种做法是，跨域的时候，JWT 就放在 POST 请求的数据体里面。总结为以下两点：</p>
+
+<p>（1）放在HTTP请求头信息Authorization字段里</p>
+
+<p>（2）放在POST请求的数据体里</p>
+
+<p><br></p>
+
+<h2 id="jwt-的几个特点">JWT 的几个特点</h2>
+
+<p>（1）JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</p>
+
+<p>（2）JWT 不加密的情况下，不能将秘密数据写入 JWT。</p>
+
+<p>（3）JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</p>
+
+<blockquote>
+<h2 id="when-should-you-use-json-web-tokens">When should you use JSON Web Tokens?</h2>
+
+<p>Here are some scenarios where JSON Web Tokens are useful:</p>
+
+<ul>
+<li><strong>Authorization</strong>: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.</li>
+<li><strong>Information Exchange</strong>: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn&rsquo;t been tampered with.</li>
+</ul>
+</blockquote>
+
+<p>（4）JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。</p>
+
+<p>（5）JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</p>
+
+<p>（6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</p>
+
+<p><br></p>
+
+<h2 id="demo">Demo</h2>
+
+<p>一个简单的生成和解析JWT Demo: <a href="https://github.com/snowbazz/blog-code/tree/master/Jwt">https://github.com/snowbazz/blog-code/tree/master/Jwt</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">snowbazz</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-04-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/jwt/">jwt</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sort-algorithm/">
+            <span class="next-text nav-default">Sort Algorithm</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'http-orrrz-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:icejammm@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/snowbazz" class="iconfont icon-github" title="github"></a>
+  <a href="http://snowbazz.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">snowbazz</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

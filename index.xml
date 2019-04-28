@@ -6,10 +6,19 @@
     <description>Recent content on SnowBazz&#39;blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 18 Apr 2019 22:57:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Apr 2019 02:39:04 +0800</lastBuildDate>
     
 	<atom:link href="http://snowbazz.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JWT入门</title>
+      <link>http://snowbazz.github.io/post/jwt%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 29 Apr 2019 02:39:04 +0800</pubDate>
+      
+      <guid>http://snowbazz.github.io/post/jwt%E5%85%A5%E9%97%A8/</guid>
+      <description>学习JWT时的一篇笔记，内容没整理，比较杂乱。 基于Session的服务认证 基于Session的服务认证的流程 ​ 1、用户向服务器发送用户名和密</description>
+    </item>
     
     <item>
       <title>Sort Algorithm</title>
