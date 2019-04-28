@@ -72,6 +72,13 @@
   </url>
   
   <url>
+    <loc>http://snowbazz.github.io/</loc>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://snowbazz.github.io/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -86,13 +93,6 @@
   
   <url>
     <loc>http://snowbazz.github.io/categories/algorithm/</loc>
-    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://snowbazz.github.io/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
