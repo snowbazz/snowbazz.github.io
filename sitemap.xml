@@ -52,7 +52,7 @@
   </url>
   
   <url>
-    <loc>http://snowbazz.github.io/post/git-memo/</loc>
+    <loc>http://snowbazz.github.io/post/git-cheat-sheet/</loc>
     <lastmod>2019-03-20T10:48:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -92,13 +92,6 @@
   </url>
   
   <url>
-    <loc>http://snowbazz.github.io/categories/algorithm/</loc>
-    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://snowbazz.github.io/tags/algorithm/</loc>
     <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -106,8 +99,8 @@
   </url>
   
   <url>
-    <loc>http://snowbazz.github.io/categories/jwt/</loc>
-    <lastmod>2019-04-29T02:39:04+08:00</lastmod>
+    <loc>http://snowbazz.github.io/categories/algorithm/</loc>
+    <lastmod>2019-04-18T22:57:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -120,14 +113,21 @@
   </url>
   
   <url>
-    <loc>http://snowbazz.github.io/categories/spring/</loc>
-    <lastmod>2019-04-14T04:14:28+08:00</lastmod>
+    <loc>http://snowbazz.github.io/categories/jwt/</loc>
+    <lastmod>2019-04-29T02:39:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://snowbazz.github.io/tags/spring/</loc>
+    <lastmod>2019-04-14T04:14:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://snowbazz.github.io/categories/spring/</loc>
     <lastmod>2019-04-14T04:14:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

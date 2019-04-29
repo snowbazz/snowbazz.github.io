@@ -83,11 +83,11 @@ failure shortcodes
     </item>
     
     <item>
-      <title>Git Memo</title>
-      <link>http://snowbazz.github.io/post/git-memo/</link>
+      <title>Git Cheat Sheet</title>
+      <link>http://snowbazz.github.io/post/git-cheat-sheet/</link>
       <pubDate>Wed, 20 Mar 2019 10:48:50 +0800</pubDate>
       
-      <guid>http://snowbazz.github.io/post/git-memo/</guid>
+      <guid>http://snowbazz.github.io/post/git-cheat-sheet/</guid>
       <description>HUGO Add some content 1 hugo new posts/xxx.md Start the Hugo Server 1 2 3 4 5 6 # 启动本地服务器 hugo server -t=we -D # 访问地址 127.0.0.1：1313 # 重新生成静态blog，t=theme hugo -t=hyde</description>
     </item>
     
