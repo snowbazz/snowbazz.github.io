@@ -14,6 +14,7 @@
 | 插入排序 | O(n^2)    | （有序区，无序区）。把无序区的第一个元素插入到有序区的合适的位置。 |
 | 希尔排序 | nlog^2(n) | 每一轮按照事先决定的增量进行插入排序，增量会依次缩小，最后一次增量一定要是1。 |
 | 快速排序 | nlog(n)   | （小数，分界点，大数）。                                     |
+| 归并排序 | O(nlogn)  | 分治法                                                       |
 
 <br/>
 
@@ -344,6 +345,14 @@ private static int getIndex(int[] arr, int low, int high) {
 ```
 
 <br>
+
+
+
+## 归并排序
+
+参考：<https://www.cnblogs.com/chengxiao/p/6194356.html>
+
+
 
 ## 参考资料
 
