@@ -51,7 +51,7 @@
 
 <meta itemprop="datePublished" content="2019-04-18T22:57:44&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-18T22:57:44&#43;08:00" />
-<meta itemprop="wordCount" content="2175">
+<meta itemprop="wordCount" content="2458">
 
 
 
@@ -705,8 +705,87 @@
 <p><br></p>
 
 <h2 id="归并排序">归并排序</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// -----------------------------------------Merge Sort----------------------------------------
+</span><span class="c1"></span><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">mergeSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>   <span class="c1">// 在排序前，先建好一个长度等于原数组长度的临时数组，避免递归中频繁开辟空间
+</span><span class="c1"></span>    <span class="n">mergeSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">temp</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">mergeSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span><span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+        <span class="n">mergeSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">temp</span><span class="o">);</span>
+        <span class="n">mergeSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">right</span><span class="o">,</span> <span class="n">temp</span><span class="o">);</span>   <span class="c1">// 右边归并排序，使得右子序列有序
+</span><span class="c1"></span>        <span class="n">merge</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">right</span><span class="o">,</span> <span class="n">temp</span><span class="o">);</span>     <span class="c1">// 将两个有序子数组合并操作
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
 
-<p>参考：<a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>   <span class="c1">// 左序列指针
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span><span class="c1">// 右序列指针
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>      <span class="c1">// 临时数组指针
+</span><span class="c1"></span>    <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">temp</span><span class="o">[</span><span class="n">t</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">temp</span><span class="o">[</span><span class="n">t</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//将左边剩余元素填充进temp中
+</span><span class="c1"></span>        <span class="n">temp</span><span class="o">[</span><span class="n">t</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+    <span class="o">}</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>    <span class="c1">//将右序列剩余元素填充进temp中
+</span><span class="c1"></span>        <span class="n">temp</span><span class="o">[</span><span class="n">t</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+    <span class="o">}</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="c1">// 将temp中的元素全部拷贝到原数组中
+</span><span class="c1"></span>    <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">++]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">[</span><span class="n">t</span><span class="o">++];</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><br></p>
 
 <h2 id="参考资料">参考资料</h2>
 
@@ -714,7 +793,11 @@
 
 <p><a href="https://blog.csdn.net/nrsc272420199/article/details/82587933">快速排序</a></p>
 
+<p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">图解排序算法(四)之归并排序</a></p>
+
 <p>全部代码在这  ：<a href="https://github.com/snowbazz/blog-code/tree/master/Sort">https://github.com/snowbazz/blog-code/tree/master/Sort</a></p>
+
+<p><br></p>
     </div>
 
     <div class="post-copyright">
